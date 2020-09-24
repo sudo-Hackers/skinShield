@@ -1,0 +1,18 @@
+.Pdash{
+    display: flex;
+    flex-direction: column;
+   padding-left: 60px;
+    
+}
+
+
+
+.dasPat{
+    display: flex;
+    flex-direction: row;
+    padding-top:80px;
+    
+}
+.Dascard{
+    padding: 40px;
+}

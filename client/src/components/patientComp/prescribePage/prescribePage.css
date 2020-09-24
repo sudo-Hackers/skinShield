@@ -1,0 +1,13 @@
+.Prescription{
+    margin: 50px;
+    min-width: 50px;
+}
+.Patient{
+    width: 60%;
+    padding: 40px;
+}
+.Event{
+    display: flex;
+    flex-direction: row;
+    padding: 40px;
+}
