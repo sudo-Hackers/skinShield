@@ -2,6 +2,6 @@ import React from 'react';
 
 import './Logo.css';
 
-const logo = props => <h1 className="logo">Medico</h1>;
+const logo = props => <h1 className="logo">SkinShield</h1>;
 
 export default logo;

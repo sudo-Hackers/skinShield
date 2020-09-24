@@ -51,11 +51,12 @@ class Pdashboard extends Component {
 
   onSubmitHandler = (e) => {
     e.preventDefault();
+    let patient = {...this.props.patientProfile};
     const photoForm = new FormData();
     photoForm.append('photo', this.state.fle);
     console.log(this.state.fle);
     const options = {
-      url: `${process.env.REACT_APP_LINK}/api/patient/photos`,
+      url: `${process.env.REACT_APP_LINK}/api/patient/photos/`,
       method: 'POST',
       headers: {
         'Content-Type': 'multipart/form-data',

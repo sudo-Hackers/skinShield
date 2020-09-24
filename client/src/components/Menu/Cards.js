@@ -23,9 +23,9 @@ class Cards extends Component{
   <Card>
     <Card.Img variant="top" src="https://i.pinimg.com/564x/8d/cc/7d/8dcc7de6d866baf1a3228f91b26f0f96.jpg" />
     <Card.Body>
-      <Card.Title>Daily Monitoring</Card.Title>
+      <Card.Title>Weekly Monitoring</Card.Title>
       <Card.Text>
-       It has become very important nowadays, to keep a daily track of our bloodpressure, diabetes, pulserate and moreover. So, we have 
+       It has become very important nowadays, to keep a daily track of the condition of your skin and you can keep records of all your improvements eventually. So, we have 
        brought the facility of monitoring yourself on a daily basis and monitor your health daily.  
       </Card.Text>
     </Card.Body>
@@ -52,19 +52,7 @@ class Cards extends Component{
   </Card>
 </CardDeck>
             </div>
-            <div className="Doc">
-              <Card className="bg-dark text-white">
-  <Card.Img className="Docc" src="https://www.signaturemedicalgroup.com/webres/Image/Stock_Images/Doctors_870x300.jpg" alt="Card image" />
-  <Card.ImgOverlay className="Docc" style={{backgroundColor : "rgba(0,0,0,0.67)" }}>
-    <Card.Title>Have privacy issue or network issues??</Card.Title>
-    <Card.Text>
-     Don't want to turn camera to unknown or got some network issues, we have brought you yet another way of connecting you with 
-      your doctor, pick your phone and dial the number below and take the consultation over phone. 
-    </Card.Text>
-    <Card.Text style={{fontFamily: "bold" , fontSize: "23px"}}><CallIcon/>{' '} Dial on 1800-888-000</Card.Text>
-  </Card.ImgOverlay>
-</Card>
-            </div>
+           
             </div>
             </StyleRoot>
         );
