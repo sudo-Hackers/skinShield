@@ -1,6 +1,7 @@
 import Axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import Photo from './Photo';
+import "./Report.css";
 
 const Report = () => {
     const [isLoading, setIsLoading] = useState(false);
@@ -23,7 +24,7 @@ const Report = () => {
     },[]);
 
     return (
-        <div>
+        <div className="photogrid">
             {isLoading ? (
                 <div>Loading..........</div>
             ):(photos.map(photo => <Photo key={photo._id} id={photo._id} />))}

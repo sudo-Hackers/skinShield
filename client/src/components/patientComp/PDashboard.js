@@ -23,7 +23,9 @@ class Pdashboard extends Component {
     super();
     this.state = {
       fle: null,
-      report: false
+      report: false,
+      isSubmitted: false,
+      isError: false
     }
   }
 
@@ -51,7 +53,7 @@ class Pdashboard extends Component {
 
   onSubmitHandler = (e) => {
     e.preventDefault();
-    let patient = {...this.props.patientProfile};
+    let patient = { ...this.props.patientProfile };
     const photoForm = new FormData();
     photoForm.append('photo', this.state.fle);
     console.log(this.state.fle);
@@ -65,7 +67,11 @@ class Pdashboard extends Component {
       data: photoForm
     };
     Axios(options).then((res) => {
-      console.log(res)
+      console.log(res);
+      this.setState({ isSubmitted: true });
+    }).catch(err => {
+      console.log(err);
+      this.setState({isError: true});
     });
   }
 
@@ -101,6 +107,14 @@ class Pdashboard extends Component {
               </Card>
             </div>
             <div>
+              {this.state.isSubmitted && (
+                <p>
+                  Photo uploaded successfully.
+                </p>
+              )}
+              {this.state.isError && (
+                <p>Error occured!</p>
+              )}
               <Form
                 onSubmit={this.onSubmitHandler}
                 className="upload-form"
