@@ -10,11 +10,11 @@ const Appointment = require('../models/appointments');
 
 const transporter = nodemailer.createTransport(
     sendgridTransport({
-      auth: {
-        api_key:process.env.api_key
-      }
+        auth: {
+            api_key: process.env.api_key
+        }
     })
-  );
+);
 
 
 exports.getDoctors = async (req, res, next) => {
@@ -143,18 +143,18 @@ exports.getPrescription = async (req, res, next) => {
         var prescArr = [];
         var problemArr = [];
         var event = [];
-        const eventData = await Appointment.find({patientId: id,doctorId: docId});
-        if(eventData){
+        const eventData = await Appointment.find({ patientId: id, doctorId: docId });
+        if (eventData) {
             event = eventData;
             console.log(event);
         }
         if (resData) {
             prescArr = resData.data;
             problemArr = resData.problem;
-            console.log(prescArr,'\n',problemArr);
+            console.log(prescArr, '\n', problemArr);
             res.status(200).json({ message: "success", prescArr: prescArr, problemArr: problemArr, event: event });
         } else {
-            res.status(200).json({ message: "success", prescArr: prescArr, problemArr:problemArr, event: event });
+            res.status(200).json({ message: "success", prescArr: prescArr, problemArr: problemArr, event: event });
         }
     } catch (err) {
         console.log(err);
@@ -165,20 +165,20 @@ exports.getPrescription = async (req, res, next) => {
 exports.sendProblem = async (req, res, next) => {
     const id = req.userId;
     const docId = req.params.doctorId;
-    try{
-        const result = await Relation.findOne({doctorId: docId, patientId: id});
+    try {
+        const result = await Relation.findOne({ doctorId: docId, patientId: id });
         const relationId = result._id;
         const problem = req.body.problem;
         const time = req.body.time;
-        const presc = await Prescription.findOne({relationId: relationId});
-        if(presc){
+        const presc = await Prescription.findOne({ relationId: relationId });
+        if (presc) {
             presc.problem.push({
                 problemData: problem,
                 time: time
             });
             const resu = await presc.save();
             console.log(resu);
-        }else{
+        } else {
             const prescription = new Prescription({
                 relationId: relationId,
                 problem: {
@@ -189,9 +189,9 @@ exports.sendProblem = async (req, res, next) => {
             const resu = await prescription.save();
             console.log(resu);
         }
-        const arr = await Prescription.findOne({relationId: relationId});
-        res.status(200).json({message: "success", arr: arr});
-    }catch(err){
+        const arr = await Prescription.findOne({ relationId: relationId });
+        res.status(200).json({ message: "success", arr: arr });
+    } catch (err) {
 
     }
 }
@@ -232,7 +232,7 @@ exports.saveMonitorData = async (req, res, next) => {
 exports.sendVideoRequest = async (req, res, next) => {
     const docId = req.params.doctorId;
     const patientId = req.userId;
-    try{
+    try {
         const doctor = await Doctor.findById(docId);
         const d = new Date();
         const obj = {
@@ -243,8 +243,44 @@ exports.sendVideoRequest = async (req, res, next) => {
         await doctor.save();
         console.log("sent");
         res.status(200).json({ message: "success" });
-    }catch(err){
+    } catch (err) {
         console.log(err);
         next(err);
     }
+}
+
+exports.postPhoto = async (req, res, next) => {
+    try {
+        console.log(req.body);
+        const photo = new Monitor(req.body);
+        const file = req.file.buffer;
+        photo.photo = file;
+
+        const result = await photo.save();
+        console.log(result);
+        res.status(201).send({ _id: photo._id });
+    } catch (error) {
+        res.status(500).send({
+            upload_error: 'Error while uploading file...Try again later.'
+        });
+    }
+}
+
+exports.getPhoto = async(req, res, next) =>{
+    try {
+        const photos = await Monitor.find({});
+        res.send(photos);
+      } catch (error) {
+        res.status(500).send({ get_error: 'Error while getting list of photos.' });
+      }
+}
+
+exports.getSinglePhoto = async(req, res, next) => {
+    try {
+        const result = await Monitor.findById(req.params.id);
+        res.set('Content-Type', 'image/jpeg');
+        res.send(result.photo);
+      } catch (error) {
+        res.status(400).send({ get_error: 'Error while getting photo.' });
+      }
 }

@@ -38,6 +38,7 @@ import PatientPrescribePage from './components/patientComp/prescribePage/prescri
 import ChatButton from './components/chatButton/chatButton';
 import ChatBot from './components/chatbot/chatbot';
 import Map from './components/map/map';
+import Report from './components/patientComp/report/Report';
 
 import Axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -402,6 +403,9 @@ class App extends Component {
         <Switch>
           <Route exact path="/">
             <PatDashboard />
+          </Route>
+          <Route exact path = "/report">
+            <Report />
           </Route>
           <Route exact path="/patientProfile">
             <PatProfile />

@@ -5,13 +5,13 @@ import { connect } from 'react-redux';
 import {
   setPatientProfile,
   setMedicines,
-  
+
 } from '../../Redux/Patient/Patient.action';
 import './Pdashboard.css';
-import {Form,Card,Button} from 'react-bootstrap';
+import { Form, Card, Button } from 'react-bootstrap';
 import { fadeIn } from 'react-animations';
-import Radium, {StyleRoot} from 'radium';
- 
+import Radium, { StyleRoot } from 'radium';
+
 const styles = {
   fadeIn: {
     animation: 'x 1.5s',
@@ -22,7 +22,8 @@ class Pdashboard extends Component {
   constructor() {
     super();
     this.state = {
-      fle: null
+      fle: null,
+      report: false
     }
   }
 
@@ -42,77 +43,88 @@ class Pdashboard extends Component {
 
       let profiles = { ...res.data.profile };
       console.log(profiles.medicines);
-        
-            this.props.setMedicines(profiles.medicines);
+
+      this.props.setMedicines(profiles.medicines);
       console.log(res.data.monitorData);
     });
   }
 
- onSubmitHandler = (e) => {
-   e.preventDefault();
-   console.log(this.state.fle);
-  const options = {
-    url: `${process.env.REACT_APP_LINK}/api/patient/photos`,
-    method: 'POST',
-    headers: {
-      Authorization: 'Bearer ' + localStorage.getItem('token'),'Content-Type': 'multipart/form-data'
-    },
-    data: {
-      files: this.state.fle
-    }
-  };
-  Axios(options).then((res)=>{
-    console.log(res)
-  });
- }
+  onSubmitHandler = (e) => {
+    e.preventDefault();
+    const photoForm = new FormData();
+    photoForm.append('photo', this.state.fle);
+    console.log(this.state.fle);
+    const options = {
+      url: `${process.env.REACT_APP_LINK}/api/patient/photos`,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        Authorization: 'Bearer ' + localStorage.getItem('token')
+      },
+      data: photoForm
+    };
+    Axios(options).then((res) => {
+      console.log(res)
+    });
+  }
+
 
   render() {
-    let patient = {...this.props.patientprofile};
+    var redirect = null;
+    if (this.state.report) {
+      redirect = <Redirect to="/report" />
+    }
+    let patient = { ...this.props.patientprofile };
     return (
-      <StyleRoot>
-      <div className="dasPat" style={styles.fadeIn}>
-        <div className="Dascard">
-          <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" src="https://i.pinimg.com/564x/b3/74/10/b37410384d879643d85b390cdb10c7d1.jpg" />
-            <Card.Body>
-              <Card.Title>Your Breif Records</Card.Title>
-              <Card.Text>
-                Hello , {patient.name} you are suffering from {patient.disease} and some of the medicine you are intaking are 
+      <div>
+        <StyleRoot>
+          <div className="dasPat" style={styles.fadeIn}>
+            <div className="Dascard">
+              <Card style={{ width: '18rem' }}>
+                <Card.Img variant="top" src="https://i.pinimg.com/564x/b3/74/10/b37410384d879643d85b390cdb10c7d1.jpg" />
+                <Card.Body>
+                  <Card.Title>Your Breif Records</Card.Title>
+                  <Card.Text>
+                    Hello , {patient.name} you are suffering from {patient.disease} and some of the medicine you are intaking are
                 {
-                  this.props.medicines.map((med)=>{
-                    return(
-                      <Card.Text>{med}{' '}</Card.Text>
-                    );
-                    
-                  })
-                }
+                      this.props.medicines.map((med) => {
+                        return (
+                          <Card.Text>{med}{' '}</Card.Text>
+                        );
+
+                      })
+                    }
                 Your weight is {patient.weight}.
               </Card.Text>
-            </Card.Body>
-          </Card>
-        </div>
-        <div>
-        <Form
+                </Card.Body>
+              </Card>
+            </div>
+            <div>
+              <Form
                 onSubmit={this.onSubmitHandler}
                 className="upload-form"
-            >
+              >
                 <Form.Group>
-                    <Form.Label>Choose photo to upload</Form.Label>
-                    <Form.Control type="file" name="files" onChange={(e)=> {this.setState({fle: e.target.files[0]})}} />
+                  <Form.Label>Choose photo to upload</Form.Label>
+                  <Form.Control type="file" name="files" onChange={(e) => { this.setState({ fle: e.target.files[0] }) }} />
                 </Form.Group>
                 <Button
-                    variant="primary"
-                    type="submit"
-                    className={`${!this.state.fle ? 'disabled submit-btn' : 'submit-btn'}`}
-                    disabled={this.state.fle ? false : true}
+                  variant="primary"
+                  type="submit"
+                  className={`${!this.state.fle ? 'disabled submit-btn' : 'submit-btn'}`}
+                  disabled={this.state.fle ? false : true}
                 >
-                    Upload
+                  Upload
         </Button>
-            </Form>
-        </div>
-        
+              </Form>
+            </div>
+            <div>
+              <Button onClick={() => this.setState({ report: true })}>View past Report</Button>
+            </div>
+          </div>
+        </StyleRoot>
+        {redirect}
       </div>
-      </StyleRoot>
     );
   }
 }
@@ -121,7 +133,7 @@ let mapStateToProps = function mapStateToProps(state) {
   return {
     medicines: state.patient.medicines,
     patientprofile: state.patient.patientProfile
-};
+  };
 }
 
 const mapDispatchToProps = (dispatch) => ({

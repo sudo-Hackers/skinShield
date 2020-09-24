@@ -9,7 +9,6 @@ const monitorDataSchema = new Schema({
     photo: {
         type: Buffer
     }
-
 },{timestamps: true});
 
 monitorDataSchema.methods.toJSON = function(){
