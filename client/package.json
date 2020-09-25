@@ -11,6 +11,8 @@
     "@progress/kendo-theme-bootstrap": "^4.19.0",
     "@progress/kendo-theme-default": "^4.21.0",
     "@progress/kendo-theme-material": "^3.18.0",
+    "@tensorflow/tfjs": "^2.4.0",
+    "@tensorflow/tfjs-node": "^2.4.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
