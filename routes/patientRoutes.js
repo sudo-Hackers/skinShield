@@ -1,22 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const multer = require('multer');
 
 const isAuth = require('../middleware/is-auth');
 const patientController = require('../controller/patientController');
-
-
-const upload = multer({
-    limits: {
-      fileSize: 1000000 // max file size 1MB = 1000000 bytes
-    },
-    fileFilter(req, file, cb) {
-      if (!file.originalname.match(/\.(jpeg|jpg|png)$/)) {
-        cb(new Error('only upload files with jpg or jpeg or png format.'));
-      }
-      cb(undefined, true); // continue with upload
-    }
-  });
 
 router.get("/getDoctors", isAuth, patientController.getDoctors);
 
@@ -36,7 +22,7 @@ router.post("/saveMonitorData", isAuth, patientController.saveMonitorData);
 
 router.get("/sendVideoRequest/:doctorId", isAuth, patientController.sendVideoRequest);
 
-router.post('/photos', isAuth, upload.single('photo'), patientController.postPhoto);
+router.post('/photos', isAuth, patientController.postPhoto);
 
 router.get('/photos', isAuth, patientController.getPhoto);
 

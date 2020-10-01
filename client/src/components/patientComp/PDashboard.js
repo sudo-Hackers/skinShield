@@ -26,10 +26,14 @@ class Pdashboard extends Component {
     super();
     this.state = {
       fle: null,
-      report: false,
+      clickReport: false,
       isSubmitted: false,
       isError: false,
-      model: null
+      model: null,
+      imageURL: null,
+      showImage: false,
+      showReport: false,
+      report: null
     }
   }
 
@@ -55,14 +59,18 @@ class Pdashboard extends Component {
     });
   }
 
-  onUpload = (e) => {
+
+
+  uploadHandler = (e) => {
     e.preventDefault();
-    console.log(this.state.fle);
     const url = URL.createObjectURL(this.state.fle);
     console.log(url);
+    this.setState({ imageURL: url });
+    this.setState({showImage: true});
   }
 
-  onSubmitHandler = (e) => {
+
+  onSubmitPredict = (e) => {
     e.preventDefault();
     const photoForm = new FormData();
     photoForm.append('photo', this.state.fle);
@@ -78,17 +86,18 @@ class Pdashboard extends Component {
     };
     Axios(options).then((res) => {
       console.log(res);
-      this.setState({ isSubmitted: true });
+      this.setState({report: res.data.report});
+      this.setState({ isSubmitted: true, showImage: false, showReport: true});
     }).catch(err => {
       console.log(err);
-      this.setState({isError: true});
+      this.setState({ isError: true });
     });
   }
 
 
   render() {
     var redirect = null;
-    if (this.state.report) {
+    if (this.state.clickReport) {
       redirect = <Redirect to="/report" />
     }
     let patient = { ...this.props.patientprofile };
@@ -126,22 +135,25 @@ class Pdashboard extends Component {
                 <p>Error occured!</p>
               )}
               <Form
-                onSubmit={this.onSubmitHandler}
+                onSubmit={this.state.showImage ? this.onSubmitPredict : this.uploadHandler}
                 className="upload-form"
               >
-                <Form.Group>
+                {!this.state.showImage && <Form.Group>
                   <Form.Label>Choose photo to upload</Form.Label>
                   <Form.Control type="file" name="files" onChange={(e) => { this.setState({ fle: e.target.files[0] }) }} />
-                </Form.Group>
+                </Form.Group>}
+
+                {this.state.showImage && <img src={this.state.imageURL} alt="upload-preview" height="200" width="200"/>}
                 <Button
                   variant="primary"
                   type="submit"
                   className={`${!this.state.fle ? 'disabled submit-btn' : 'submit-btn'}`}
                   disabled={this.state.fle ? false : true}
                 >
-                  Upload
+                  {this.state.showImage ? "Predict" : "Upload"}
         </Button>
               </Form>
+              {this.state.showReport && <div><h3>your report here!</h3><h4>{this.state.report}</h4></div>}
             </div>
             <div>
               <Button onClick={() => this.setState({ report: true })}>View past Report</Button>
