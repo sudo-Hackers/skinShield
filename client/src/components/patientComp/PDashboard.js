@@ -12,6 +12,9 @@ import { Form, Card, Button } from 'react-bootstrap';
 import { fadeIn } from 'react-animations';
 import Radium, { StyleRoot } from 'radium';
 
+import * as tf from '@tensorflow/tfjs';
+
+
 const styles = {
   fadeIn: {
     animation: 'x 1.5s',
@@ -25,7 +28,8 @@ class Pdashboard extends Component {
       fle: null,
       report: false,
       isSubmitted: false,
-      isError: false
+      isError: false,
+      model: null
     }
   }
 
@@ -51,9 +55,15 @@ class Pdashboard extends Component {
     });
   }
 
+  onUpload = (e) => {
+    e.preventDefault();
+    console.log(this.state.fle);
+    const url = URL.createObjectURL(this.state.fle);
+    console.log(url);
+  }
+
   onSubmitHandler = (e) => {
     e.preventDefault();
-    let patient = { ...this.props.patientProfile };
     const photoForm = new FormData();
     photoForm.append('photo', this.state.fle);
     console.log(this.state.fle);
