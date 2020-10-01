@@ -8,6 +8,8 @@ const xss = require('xss-clean');
 const mongoSanitize = require('express-mongo-sanitize');
 const dotenv = require('dotenv');
 dotenv.config();
+const multer = require('multer');
+const path = require('path');
 
 const app = express();
 const authRoutes = require('./routes/authRoutes');
@@ -35,6 +37,32 @@ app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type,Authorization');
   next();
 });
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "images");
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+  },
+});
+
+const fileFilter = (req, file, cb) => {
+  if (
+    file.mimetype === "image/png" ||
+    file.mimetype === "image/jpeg" ||
+    file.mimetype === "image/PNG"
+  ) {
+    cb(null, true);
+  } else {
+    cb(null, false);
+  }
+};
+
+app.use(multer({ storage: storage, fileFilter: fileFilter }).single("photo"));
+
+
+app.use(express.static(path.join(__dirname, "images")));
 
 // app.use(pino);
 app.use('/notifications', notificationRoutes);
