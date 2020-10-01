@@ -21,29 +21,27 @@ class Menu extends Component {
         }
         return(
             
-            <div className="Page">
+            
             <div className="Menu">
                 
                     
                 <div className="Doc">
-              <Card className="bg-dark text-white">
-  <Card.Img className="Docc" src="https://i1.wp.com/blog.petrieflom.law.harvard.edu/wp-content/uploads/2019/03/doctor_patient_care-e1588703720335.jpg?resize=750%2C410&ssl=1" alt="Card image" />
+              {/*<Card className="bg-dark text-white">
+  <Card.Img className="Docc" src="https://i.pinimg.com/564x/fb/d0/96/fbd0968077e81a9b6de9627ef9a5d884.jpg" style={{height: '130vh' , width: '1400px'}} alt="Card image" />
   <Card.ImgOverlay className="Docc" style={{backgroundColor : "rgba(0,0,0,0.67)" }}>
-    <Card.Title>SkinSheild-For your skin!!!</Card.Title>
+    <Card.Title style={{textAlign: 'right', color: '#6da6c7' , fontSize: '55px'}}>SkinSheild</Card.Title>
     <Card.Text>
             We care for your skin.
     </Card.Text>
-    <Card.Text>
-            Just few steps towards your first trial steps!!
-    </Card.Text>
   </Card.ImgOverlay>
-</Card>
+        </Card>*/}
+        <div style={{height:'80vh' , width: '100%', overflow:'hidden'}}>
+            <h1>SkinSheild</h1>
+        </div>
             
                
             </div>
             
-            </div>
-            <Cards/>
             </div>
             
         );
