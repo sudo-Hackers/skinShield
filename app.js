@@ -52,7 +52,7 @@ const fileFilter = (req, file, cb) => {
   if (
     file.mimetype === "image/png" ||
     file.mimetype === "image/jpeg" ||
-    file.mimetype === "image/PNG"
+    file.mimetype === "image/PNG"  
   ) {
     cb(null, true);
   } else {
@@ -63,7 +63,7 @@ const fileFilter = (req, file, cb) => {
 app.use(multer({ storage: storage, fileFilter: fileFilter }).single("photo"));
 
 
-app.use(express.static(path.join(__dirname, "images")));
+app.use("/images",express.static(path.join(__dirname, "images")));
 
 // app.use(pino);
 app.use('/notifications', notificationRoutes);
@@ -81,7 +81,6 @@ app.use((error, req, res, next) => {
     data: data,
   });
 });
-const host = '192.168.43.206';
 mongoose
   .connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,

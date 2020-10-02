@@ -8,6 +8,9 @@ const monitorDataSchema = new Schema({
     },
     photoUrl: {
         type: String
+    },
+    report:{
+        type: String
     }
 },{timestamps: true});
 
