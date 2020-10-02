@@ -31,5 +31,5 @@ router.get('/photos/:id', patientController.getSinglePhoto);
 
 // routes for testing purpose
 router.get('/prediction', patientController.getPrdiction);
-
+router.post('/savePhoto',patientController.postClickPhoto);
 module.exports = router;

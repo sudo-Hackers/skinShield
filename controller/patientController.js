@@ -10,6 +10,9 @@ const fs = require('fs');
 const tf = require('@tensorflow/tfjs');
 const tfn = require('@tensorflow/tfjs-node');
 
+const Photo = require('../models/photo');
+const idu = require('image-data-uri');
+
 const transporter = nodemailer.createTransport(
     sendgridTransport({
         auth: {
@@ -318,7 +321,8 @@ exports.getSinglePhoto = async (req, res, next) => {
 }
 
 
-// controller for testing purpose
+// controllers for testing purpose
+
 exports.getPrdiction = async (req, res, next) => {
     try {
         const imgContents = fs.readFileSync('images/photo-1601554295241.jpg');
@@ -351,6 +355,19 @@ exports.getPrdiction = async (req, res, next) => {
         res.send({ message: "helllo" });
     }
     catch (err) {
+        console.log(err);
+    }
+}
+
+exports.postClickPhoto = async(req, res, next) => {
+    try{
+        console.log("hello");
+        const dataUri = req.body.uri;
+        const dt = Date.now();
+        let filePath = `images/${dt}`;
+        const result = await idu.outputFile(dataUri, filePath);
+        console.log(result);
+    }catch(err){
         console.log(err);
     }
 }
