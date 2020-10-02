@@ -5,13 +5,17 @@
     align-items: center;  
     min-height: 80vh;
     padding-top: 60px;
-    background-color: 'black';
+    background-image: url('https://wallpaperaccess.com/full/136934.jpg');
+    background-repeat: 'none';
+    display: flex;
+    flex-direction: row;
    }
 .Doc{
     text-align: center;
     align-items: center;
     overflow: hidden;
     min-height: 80vh;
+   
 }
 
 

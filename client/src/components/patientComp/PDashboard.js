@@ -74,6 +74,7 @@ class Pdashboard extends Component {
     e.preventDefault();
     const photoForm = new FormData();
     photoForm.append('photo', this.state.fle);
+    console.log(photoForm);
     console.log(this.state.fle);
     const options = {
       url: `${process.env.REACT_APP_LINK}/api/patient/photos/`,
@@ -84,6 +85,7 @@ class Pdashboard extends Component {
       },
       data: photoForm
     };
+    console.log(options.data);
     Axios(options).then((res) => {
       console.log(res);
       this.setState({report: res.data.report});
