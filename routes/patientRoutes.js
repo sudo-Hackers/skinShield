@@ -30,7 +30,9 @@ router.get('/photos/:id', patientController.getSinglePhoto);
 
 router.post('/trialPhoto', patientController.postTrialPhoto);
 
+router.post('/savePhoto',patientController.postClickPhoto);
+
 // routes for testing purpose
 router.get('/prediction', patientController.getPrdiction);
-router.post('/savePhoto',patientController.postClickPhoto);
+
 module.exports = router;
