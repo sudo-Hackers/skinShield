@@ -19,6 +19,7 @@ import Toolbar from './components/Toolbar/Toolbar';
 import MainNavigation from './components/Navigation/MainNavigation/MainNavigation';
 import Location from './components/Location/Location';
 import Diet from './components/diet/diet';
+import TrialTest from './components/TrialTest/TrialTest';
 
 //doctor pages
 import DocDashboard from './components/doctorComp/dashboard';
@@ -360,6 +361,13 @@ class App extends Component {
         />
         <Route path="/admin" exact>
             <Admin/>
+        </Route>
+        <Route 
+        path="/trialTest"
+        exact
+        render={(props) => (
+          <TrialTest {...props}/>
+        )}> 
         </Route>
         <Redirect to="/" />
       </Switch>
