@@ -35,18 +35,17 @@ class Trialtest extends Component{
         console.log(photoForm);
         console.log(this.state.fle);
         const options = {
-          url: `${process.env.REACT_APP_LINK}/api/patient/photos/`,
+          url: `${process.env.REACT_APP_LINK}/api/patient/trialPhoto`,
           method: 'POST',
           headers: {
-            'Content-Type': 'multipart/form-data',
-            Authorization: 'Bearer ' + localStorage.getItem('token')
+            'Content-Type': 'multipart/form-data'
           },
           data: photoForm
         };
         console.log(options.data);
         Axios(options).then((res) => {
           console.log(res);
-          this.setState({report: res.data.report});
+          this.setState({report: res.data.data});
           this.setState({ isSubmitted: true, showImage: false, showReport: true});
         }).catch(err => {
           console.log(err);

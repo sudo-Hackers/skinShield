@@ -28,6 +28,7 @@ router.get('/photos', isAuth, patientController.getPhoto);
 
 router.get('/photos/:id', patientController.getSinglePhoto);
 
+router.post('/trialPhoto', patientController.postTrialPhoto);
 
 // routes for testing purpose
 router.get('/prediction', patientController.getPrdiction);
