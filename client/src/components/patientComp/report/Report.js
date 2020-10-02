@@ -27,7 +27,7 @@ const Report = () => {
         <div className="photogrid">
             {isLoading ? (
                 <div>Loading..........</div>
-            ):(photos.map(photo => <Photo key={photo._id} id={photo._id} />))}
+            ):(photos.map(photo => <Photo key={photo._id} id={photo.photoUrl} report={photo.report} date={photo.createdAt}/>))}
         </div>
     )
 }

@@ -28,6 +28,8 @@ router.get('/photos', isAuth, patientController.getPhoto);
 
 router.get('/photos/:id', patientController.getSinglePhoto);
 
+
+// routes for testing purpose
 router.get('/prediction', patientController.getPrdiction);
 
 module.exports = router;

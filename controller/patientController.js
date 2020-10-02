@@ -255,12 +255,6 @@ exports.postPhoto = async (req, res, next) => {
     try {
         console.log("hello");
         const id = req.userId;
-        const monitor = new Monitor({
-            patientId: id,
-            photoUrl: req.file.path.replace("\\","/")
-        });
-        const result = await monitor.save();
-        
         var url = req.file.path.replace("\\","/");
         const imgContents = fs.readFileSync(url);
         const img = tfn.node.decodeImage(imgContents, channels = 3);
@@ -287,9 +281,14 @@ exports.postPhoto = async (req, res, next) => {
                 report = cancerType[i];
             }
         }
-        res.status(200).json({
-            data: result,
+        const monitor = new Monitor({
+            patientId: id,
+            photoUrl: req.file.path.replace("\\","/"),
             report: report
+        });
+        const result = await monitor.save();
+        res.status(200).json({
+            data: result
         });
     } catch (error) {
         console.log(error);
@@ -301,7 +300,7 @@ exports.postPhoto = async (req, res, next) => {
 
 exports.getPhoto = async (req, res, next) => {
     try {
-        const photos = await Monitor.find({});
+        const photos = await Monitor.find({patientId: req.userId});
         res.send(photos);
     } catch (error) {
         res.status(500).send({ get_error: 'Error while getting list of photos.' });
@@ -318,6 +317,8 @@ exports.getSinglePhoto = async (req, res, next) => {
     }
 }
 
+
+// controller for testing purpose
 exports.getPrdiction = async (req, res, next) => {
     try {
         const imgContents = fs.readFileSync('images/photo-1601554295241.jpg');

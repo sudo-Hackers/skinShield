@@ -77,7 +77,7 @@ class Pdashboard extends Component {
     console.log(photoForm);
     console.log(this.state.fle);
     const options = {
-      url: `${process.env.REACT_APP_LINK}/api/patient/photos/`,
+      url: `${process.env.REACT_APP_LINK}/api/patient/photos`,
       method: 'POST',
       headers: {
         'Content-Type': 'multipart/form-data',
@@ -85,10 +85,10 @@ class Pdashboard extends Component {
       },
       data: photoForm
     };
-    console.log(options.data);
+
     Axios(options).then((res) => {
       console.log(res);
-      this.setState({report: res.data.report});
+      this.setState({report: res.data.data.report});
       this.setState({ isSubmitted: true, showImage: false, showReport: true});
     }).catch(err => {
       console.log(err);
@@ -158,7 +158,7 @@ class Pdashboard extends Component {
               {this.state.showReport && <div><h3>your report here!</h3><h4>{this.state.report}</h4></div>}
             </div>
             <div>
-              <Button onClick={() => this.setState({ report: true })}>View past Report</Button>
+              <Button onClick={() => this.setState({ clickReport: true })}>View past Report</Button>
             </div>
           </div>
         </StyleRoot>
