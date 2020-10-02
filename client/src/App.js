@@ -40,6 +40,7 @@ import ChatButton from './components/chatButton/chatButton';
 import ChatBot from './components/chatbot/chatbot';
 import Map from './components/map/map';
 import Report from './components/patientComp/report/Report';
+import Camera from './components/patientComp/Camera/camera';
 
 import Axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -414,6 +415,9 @@ class App extends Component {
           </Route>
           <Route exact path = "/report">
             <Report />
+          </Route>
+          <Route exact path="/camera">
+            <Camera />  
           </Route>
           <Route exact path="/patientProfile">
             <PatProfile />

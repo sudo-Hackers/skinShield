@@ -18,7 +18,7 @@ const doctorRoutes = require('./routes/doctorRoutes');
 const notificationRoutes = require('./routes/notificationRoutes');
 
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(bodyParser.json({limit: '20mb', extended: true}));
 app.use(helmet());
 
 
