@@ -11,8 +11,7 @@ import './Pdashboard.css';
 import { Form, Card, Button } from 'react-bootstrap';
 import { fadeIn } from 'react-animations';
 import Radium, { StyleRoot } from 'radium';
-
-import * as tf from '@tensorflow/tfjs';
+import AddAPhotoIcon from '@material-ui/icons/AddAPhoto';
 
 
 const styles = {
@@ -33,7 +32,8 @@ class Pdashboard extends Component {
       imageURL: null,
       showImage: false,
       showReport: false,
-      report: null
+      report: null,
+      captureImage: false
     }
   }
 
@@ -66,7 +66,7 @@ class Pdashboard extends Component {
     const url = URL.createObjectURL(this.state.fle);
     console.log(url);
     this.setState({ imageURL: url });
-    this.setState({showImage: true});
+    this.setState({ showImage: true });
   }
 
 
@@ -87,8 +87,8 @@ class Pdashboard extends Component {
     };
     Axios(options).then((res) => {
       console.log(res);
-      this.setState({report: res.data.data.report});
-      this.setState({ isSubmitted: true, showImage: false, showReport: true});
+      this.setState({ report: res.data.data.report });
+      this.setState({ isSubmitted: true, showImage: false, showReport: true });
     }).catch(err => {
       console.log(err);
       this.setState({ isError: true });
@@ -98,8 +98,12 @@ class Pdashboard extends Component {
 
   render() {
     var redirect = null;
+    var redirect2 = null;
     if (this.state.clickReport) {
       redirect = <Redirect to="/report" />
+    }
+    if(this.state.captureImage){
+      redirect2 = <Redirect to="/camera" />;
     }
     let patient = { ...this.props.patientprofile };
     return (
@@ -144,7 +148,7 @@ class Pdashboard extends Component {
                   <Form.Control type="file" name="files" onChange={(e) => { this.setState({ fle: e.target.files[0] }) }} />
                 </Form.Group>}
 
-                {this.state.showImage && <img src={this.state.imageURL} alt="upload-preview" height="200" width="200"/>}
+                {this.state.showImage && <img src={this.state.imageURL} alt="upload-preview" height="200" width="200" />}
                 <Button
                   variant="primary"
                   type="submit"
@@ -152,16 +156,23 @@ class Pdashboard extends Component {
                   disabled={this.state.fle ? false : true}
                 >
                   {this.state.showImage ? "Predict" : "Upload"}
-        </Button>
+                </Button>
               </Form>
               {this.state.showReport && <div><h3>your report here!</h3><h4>{this.state.report}</h4></div>}
             </div>
             <div>
               <Button onClick={() => this.setState({ clickReport: true })}>View past Report</Button>
             </div>
+            <div>
+              <Button onClick={()=>this.setState({captureImage: true})}>
+                <AddAPhotoIcon />
+              </Button>
+
+            </div>
           </div>
         </StyleRoot>
         {redirect}
+        {redirect2}
       </div>
     );
   }
