@@ -9,8 +9,10 @@ const Appointment = require('../models/appointments');
 const fs = require('fs');
 const tf = require('@tensorflow/tfjs');
 const tfn = require('@tensorflow/tfjs-node');
+const dotenv = require('dotenv');
+dotenv.config();
 
-const Photo = require('../models/photo');
+const Forum = require('../models/forum');
 const idu = require('image-data-uri');
 
 const transporter = nodemailer.createTransport(
@@ -258,35 +260,35 @@ exports.postPhoto = async (req, res, next) => {
     try {
         console.log("hello");
         const id = req.userId;
-        var url = req.file.path.replace("\\","/");
+        var url = req.file.path.replace("\\", "/");
         const imgContents = fs.readFileSync(url);
         const img = tfn.node.decodeImage(imgContents, channels = 3);
         var img1 = img.resizeNearestNeighbor([224, 224]).toFloat().div(255.0);
         var img2 = img1.reshape([1, 224, 224, 3]);
-        const model = await tf.loadLayersModel('/tfjs-models/model1/model.json');
+        const model = await tf.loadLayersModel(process.env.MODEL_PATH + '/tfjs-models/model1/model.json');
         const prediction = await model.predict(img2).array();
         var report;
-        var cancerDetect = ['Benign','Malignant'];
+        var cancerDetect = ['Benign', 'Malignant'];
         if (prediction[0][0] > prediction[0][1]) {
             report = cancerDetect[0];
         } else {
             var cancerType = ['bcc', 'nv', 'melanoma'];
             var img3 = img.resizeNearestNeighbor([128, 128]).toFloat().div(255.0);
             var img4 = img3.reshape([1, 128, 128, 3]);
-            const model2 = await tf.loadLayersModel('/tfjs-models/model2/model.json');
+            const model2 = await tf.loadLayersModel(process.env.MODEL_PATH + '/tfjs-models/model2/model.json');
             const predictCancer = await model2.predict(img4).array();
-            if(predictCancer[0][0]>0.3)
+            if (predictCancer[0][0] > 0.3)
                 report = cancerType[0];
-            else if(predictCancer[0][1]>0.3)
+            else if (predictCancer[0][1] > 0.3)
                 report = cancerType[1];
-            else{
+            else {
                 let i = predictCancer[0].indexOf(Math.max(...predictCancer[0]));
                 report = cancerType[i];
             }
         }
         const monitor = new Monitor({
             patientId: id,
-            photoUrl: req.file.path.replace("\\","/"),
+            photoUrl: req.file.path.replace("\\", "/"),
             report: report
         });
         const result = await monitor.save();
@@ -303,7 +305,7 @@ exports.postPhoto = async (req, res, next) => {
 
 exports.getPhoto = async (req, res, next) => {
     try {
-        const photos = await Monitor.find({patientId: req.userId});
+        const photos = await Monitor.find({ patientId: req.userId });
         res.send(photos);
     } catch (error) {
         res.status(500).send({ get_error: 'Error while getting list of photos.' });
@@ -320,31 +322,33 @@ exports.getSinglePhoto = async (req, res, next) => {
     }
 }
 
-exports.postTrialPhoto = async(req, res, next) => {
+exports.postTrialPhoto = async (req, res, next) => {
     try {
         console.log("hello");
-        var url = req.file.path.replace("\\","/");
+        var url = req.file.path.replace("\\", "/");
         const imgContents = fs.readFileSync(url);
         const img = tfn.node.decodeImage(imgContents, channels = 3);
         var img1 = img.resizeNearestNeighbor([224, 224]).toFloat().div(255.0);
         var img2 = img1.reshape([1, 224, 224, 3]);
-        const model = await tf.loadLayersModel('/tfjs-models/model1/model.json');
+
+        const model = await tf.loadLayersModel(process.env.MODEL_PATH + '/tfjs-models/model1/model.json');
         const prediction = await model.predict(img2).array();
         var report;
-        var cancerDetect = ['Benign','Malignant'];
+        var cancerDetect = ['Benign', 'Malignant'];
         if (prediction[0][0] > prediction[0][1]) {
             report = cancerDetect[0];
         } else {
             var cancerType = ['bcc', 'nv', 'melanoma'];
             var img3 = img.resizeNearestNeighbor([128, 128]).toFloat().div(255.0);
             var img4 = img3.reshape([1, 128, 128, 3]);
-            const model2 = await tf.loadLayersModel('/tfjs-models/model2/model.json');
+
+            const model2 = await tf.loadLayersModel(process.env.MODEL_PATH + '/tfjs-models/model2/model.json');
             const predictCancer = await model2.predict(img4).array();
-            if(predictCancer[0][0]>0.3)
+            if (predictCancer[0][0] > 0.3)
                 report = cancerType[0];
-            else if(predictCancer[0][1]>0.3)
+            else if (predictCancer[0][1] > 0.3)
                 report = cancerType[1];
-            else{
+            else {
                 let i = predictCancer[0].indexOf(Math.max(...predictCancer[0]));
                 report = cancerType[i];
             }
@@ -360,36 +364,38 @@ exports.postTrialPhoto = async(req, res, next) => {
     }
 }
 
-exports.postClickPhoto = async(req, res, next) => {
-    try{
+exports.postClickPhoto = async (req, res, next) => {
+    try {
         const id = req.userId;
         const dataUri = req.body.uri;
         const dt = Date.now();
         let filePath = `images/${dt}`;
         const result = await idu.outputFile(dataUri, filePath);
         console.log(result);
-        const url = 'images/'+dt+'.png';
+        const url = 'images/' + dt + '.png';
         const imgContents = fs.readFileSync(url);
         const img = tfn.node.decodeImage(imgContents, channels = 3);
         var img1 = img.resizeNearestNeighbor([224, 224]).toFloat().div(255.0);
         var img2 = img1.reshape([1, 224, 224, 3]);
-        const model = await tf.loadLayersModel('/tfjs-models/model1/model.json');
+
+        const model = await tf.loadLayersModel(process.env.MODEL_PATH + '/tfjs-models/model1/model.json');
         const prediction = await model.predict(img2).array();
         var report;
-        var cancerDetect = ['Benign','Malignant'];
+        var cancerDetect = ['Benign', 'Malignant'];
         if (prediction[0][0] > prediction[0][1]) {
             report = cancerDetect[0];
         } else {
             var cancerType = ['bcc', 'nv', 'melanoma'];
             var img3 = img.resizeNearestNeighbor([128, 128]).toFloat().div(255.0);
             var img4 = img3.reshape([1, 128, 128, 3]);
-            const model2 = await tf.loadLayersModel('/tfjs-models/model2/model.json');
+
+            const model2 = await tf.loadLayersModel(process.env.MODEL_PATH + '/tfjs-models/model2/model.json');
             const predictCancer = await model2.predict(img4).array();
-            if(predictCancer[0][0]>0.3)
+            if (predictCancer[0][0] > 0.3)
                 report = cancerType[0];
-            else if(predictCancer[0][1]>0.3)
+            else if (predictCancer[0][1] > 0.3)
                 report = cancerType[1];
-            else{
+            else {
                 let i = predictCancer[0].indexOf(Math.max(...predictCancer[0]));
                 report = cancerType[i];
             }
@@ -403,12 +409,35 @@ exports.postClickPhoto = async(req, res, next) => {
         res.status(200).json({
             data: resu
         });
-    }catch(err){
+    } catch (err) {
         console.log(err);
     }
 }
 
+exports.saveForum = async (req, res, next) => {
+    try {
+        const { author, blog } = req.body;
+        const forum = new Forum({
+            author: author,
+            blog: blog
+        });
+        const result = await forum.save();
+        console.log(result);
+        res.status(200).json({message: "success"});
+    } catch (err) {
+        console.log(err);
+    }
+}
 
+exports.getForum = async(req, res, next) => {
+    try{
+        const arr = await Forum.find();
+        console.log(arr);
+        res.status(200).json({message: "success", data: arr});
+    }catch(err){
+        console.log(err);
+    }
+}
 
 
 
@@ -422,7 +451,7 @@ exports.getPrdiction = async (req, res, next) => {
         var img1 = img.resizeNearestNeighbor([224, 224]).toFloat().div(255.0);
         var img2 = img1.reshape([1, 224, 224, 3]);
         // console.log(imgContents);
-        const model = await tf.loadLayersModel('file://E:/WORKSPACE/skin_shield/skinShield/tfjs-models/model1/model.json');
+        const model = await tf.loadLayersModel(process.env.MODEL_PATH + '/tfjs-models/model1/model.json');
         const prediction = await model.predict(img2).array();
         console.log(prediction);
         if (prediction[0][0] > prediction[0][1]) {
@@ -431,14 +460,14 @@ exports.getPrdiction = async (req, res, next) => {
             var arr = ['bcc', 'nv', 'melanoma'];
             var img3 = img.resizeNearestNeighbor([128, 128]).toFloat().div(255.0);
             var img4 = img3.reshape([1, 128, 128, 3]);
-            const model2 = await tf.loadLayersModel('file://E:/WORKSPACE/skin_shield/skinShield/tfjs-models/model2/model.json');
+            const model2 = await tf.loadLayersModel(process.env.MODEL_PATH + '/tfjs-models/model2/model.json');
             const predictCancer = await model2.predict(img4).array();
             console.log(predictCancer);
-            if(predictCancer[0][0]>0.3)
+            if (predictCancer[0][0] > 0.3)
                 console.log(arr[0]);
-            else if(predictCancer[0][1]>0.3)
+            else if (predictCancer[0][1] > 0.3)
                 console.log(arr[1]);
-            else{
+            else {
                 let i = predictCancer[0].indexOf(Math.max(...predictCancer[0]));
                 console.log(arr[i]);
             }
