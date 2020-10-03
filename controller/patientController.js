@@ -460,7 +460,7 @@ exports.getPrdiction = async (req, res, next) => {
             const predictCancer = await model2.predict(img4).array();
             console.log(predictCancer);
             if (predictCancer[0][0] > 0.3)
-                console.log(arr[0]);
+                    console.log(arr[0]);
             else if (predictCancer[0][1] > 0.3)
                 console.log(arr[1]);
             else {
