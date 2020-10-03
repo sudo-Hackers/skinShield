@@ -16,3 +16,7 @@
 .Dascard{
     padding: 40px;
 }
+.Discussion{
+    padding: 40px;
+    transform: translateX(300px);
+}

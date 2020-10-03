@@ -32,6 +32,7 @@ import VideoRequest from './components/doctorComp/videoRequest/videoRequest';
 
 //patient pages
 import PatDashboard from './components/patientComp/PDashboard';
+import DiscussionForums from './components/patientComp/DiscussonForums/DiscussinForums';
 import PatProfile from './components/patientComp/PatProfile/PatProfile';
 import DoctorPanel from './components/patientComp/doctorpanel/doctorPanel';
 import PatientPrescriptionPanel from './components/patientComp/prescriptionPanel/prescriptionPanel';
@@ -398,6 +399,11 @@ class App extends Component {
         <Switch>
           <Route exact path="/">
             <PatDashboard />
+          </Route>
+          <Route 
+          exact 
+          path="/discussionForums">
+            <DiscussionForums/>
           </Route>
           <Route exact path = "/report">
             <Report />

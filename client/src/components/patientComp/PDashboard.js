@@ -33,7 +33,8 @@ class Pdashboard extends Component {
       showImage: false,
       showReport: false,
       report: null,
-      captureImage: false
+      captureImage: false,
+      discuss: false
     }
   }
 
@@ -99,6 +100,10 @@ class Pdashboard extends Component {
   render() {
     var redirect = null;
     var redirect2 = null;
+    var redirectD= null;
+    if(this.state.discuss){
+      redirectD = <Redirect to="/discussionForums"/>
+    }
     if (this.state.clickReport) {
       redirect = <Redirect to="/report" />
     }
@@ -160,10 +165,23 @@ class Pdashboard extends Component {
               </Button>
 
             </div>
+            <div className="Discussion">
+            <Card style={{ width: '18rem' }}>
+  <Card.Img variant="top" src="https://i.pinimg.com/564x/88/9b/b5/889bb583679d9f4fd644beedccaf81c9.jpg" />
+  <Card.Body>
+    <Card.Title>Discussion forums</Card.Title>
+    <Card.Text>
+      Share your experiances and read people's experiance regarding this disease...
+    </Card.Text>
+    <Button variant="primary" onClick={() => this.setState({discuss : true})}>Read blogs!!!</Button>
+  </Card.Body>
+</Card>
+            </div>
           </div>
         </StyleRoot>
         {redirect}
         {redirect2}
+        {redirectD}
       </div>
     );
   }
