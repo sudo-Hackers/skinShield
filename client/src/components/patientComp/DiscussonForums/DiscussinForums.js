@@ -3,6 +3,7 @@ import {Card,Form,Button} from 'react-bootstrap';
 import {connect} from 'react-redux';
 import Axios from 'axios';
 import {setBlogs} from '../../../Redux/Patient/Patient.action';
+import Posts from './Posts';
 
 import './DiscussionForums.css';
 
@@ -75,6 +76,7 @@ class DiscussionForums extends Component{
         console.log(this.state.blogs);
         console.log(this.state.name);
         return(
+            <div>
             <div  className="DiscussF">
                 <Card style={{width: '50rem' ,textAlign:'center'}}>
     <Card.Img variant="top" src="https://i.pinimg.com/564x/f7/ca/a3/f7caa3860ee4c6ddfa9f18b8939d6cd6.jpg" style={{height: '35vh'}}  />
@@ -91,7 +93,18 @@ class DiscussionForums extends Component{
       </Form>
     </Card.Body>
   </Card>
+  </div>
+            <div className="blogs">
+                {
+                    this.state.blogs.map((blog) => {
+                        return(
+                        <Posts author = {blog.author} blog = {blog.blog}/>
+                        );
+                    } )
+                }
             </div>
+            </div>
+            
         );
     }
 }
