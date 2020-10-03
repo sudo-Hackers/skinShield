@@ -8,10 +8,11 @@ import {
 
 } from '../../Redux/Patient/Patient.action';
 import './Pdashboard.css';
-import { Form, Card, Button } from 'react-bootstrap';
+import { Form, Card, Button , Alert} from 'react-bootstrap';
 import { fadeIn } from 'react-animations';
 import Radium, { StyleRoot } from 'radium';
 import AddAPhotoIcon from '@material-ui/icons/AddAPhoto';
+import Data from '../../Assets/cancers (5).json';
 
 
 const styles = {
@@ -126,45 +127,79 @@ class Pdashboard extends Component {
                 </Card.Body>
               </Card>
             </div>
-            <div>
-              {this.state.isSubmitted && (
-                <p>
-                  Photo uploaded successfully.
-                </p>
-              )}
-              {this.state.isError && (
-                <p>Error occured!</p>
-              )}
-              <Form
-                onSubmit={this.state.showImage ? this.onSubmitPredict : this.uploadHandler}
-                className="upload-form"
-              >
-                {!this.state.showImage && <Form.Group>
-                  <Form.Label>Choose photo to upload</Form.Label>
-                  <Form.Control type="file" name="files" onChange={(e) => { this.setState({ fle: e.target.files[0] }) }} />
-                </Form.Group>}
+            <div style={{textAlign: 'center' , transform: 'translateX(100px)'}}> 
+        <Card className="text-center">
 
-                {this.state.showImage && <img src={this.state.imageURL} alt="upload-preview" height="200" width="200" />}
-                <Button
-                  variant="primary"
-                  type="submit"
-                  className={`${!this.state.fle ? 'disabled submit-btn' : 'submit-btn'}`}
-                  disabled={this.state.fle ? false : true}
-                >
-                  {this.state.showImage ? "Predict" : "Upload"}
-                </Button>
-              </Form>
-              {this.state.showReport && <div><h3>your report here!</h3><h4>{this.state.report}</h4></div>}
-            </div>
-            <div>
-              <Button onClick={() => this.setState({ clickReport: true })}>View past Report</Button>
-            </div>
-            <div>
-              <Button onClick={()=>this.setState({captureImage: true})}>
+          <Card.Body>
+
+            {this.state.isSubmitted && (
+              <Card.Text>
+                Photo uploaded successfully.
+              </Card.Text>
+
+
+            )}
+            {this.state.isError && (
+              <Card.Text>
+                error ocurred
+              </Card.Text>
+            )}
+            <Form
+              onSubmit={this.state.showImage ? this.onSubmitPredict : this.uploadHandler}
+              className="upload-form"
+            >
+              {!this.state.showImage &&
+                <Form.File 
+                id="custom-file"
+                label="Select a File"
+                name="files"
+                onChange={(e) => { this.setState({ fle: e.target.files[0] }) }} 
+                custom
+                style={{marginBottom: '10px'}}
+              >
+                </Form.File>}
+
+              {this.state.showImage && <img src={this.state.imageURL} alt="upload-preview" height="200" width="200" style={{padding: '10px'}}/>}
+              <Button
+                variant="primary"
+                type="submit"
+                
+                className={`${!this.state.fle ? 'disabled submit-btn' : 'submit-btn'}`}
+                disabled={this.state.fle ? false : true}
+              >
+                {this.state.showImage ? "Predict" : "Upload"}
+              </Button>
+            </Form>
+            <div style={{padding: '10px'}}>
+              <h2 style={{color: '#11455B',fontSize:'28px',fontFamily: 'Kaushan Script, cursive'}}>OR</h2>
+            <Alert variant="info">
+        Take picture and zoom it to the spot which has to be detected!!
+  </Alert>
+              <Button onClick={() => this.setState({ captureImage: true })}>
                 <AddAPhotoIcon />
               </Button>
 
             </div>
+         
+
+          </Card.Body>
+        </Card>
+        {this.state.showReport &&
+        <Card style={{marginTop: '20px' , textAlign: 'center'}}>
+          <Card.Title>Your Report </Card.Title>
+          You are detected to have {this.state.report} type of cancer.
+          {
+            Data[this.state.report].map((d) => {
+              return(
+              <Card.Text>
+                {d}
+              </Card.Text>
+              );
+            })
+          }
+          </Card>}
+          <Button  style={{marginTop: '10px' }} onClick={() => this.setState({ clickReport: true })}>View past Report</Button>
+      </div>
             <div className="Discussion">
             <Card style={{ width: '18rem' }}>
   <Card.Img variant="top" src="https://i.pinimg.com/564x/88/9b/b5/889bb583679d9f4fd644beedccaf81c9.jpg" />
