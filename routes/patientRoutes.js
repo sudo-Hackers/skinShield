@@ -18,8 +18,6 @@ router.get("/getPrescription/:doctorId", isAuth, patientController.getPrescripti
 
 router.post("/sendProblem/:doctorId", isAuth, patientController.sendProblem);
 
-router.post("/saveMonitorData", isAuth, patientController.saveMonitorData);
-
 router.get("/sendVideoRequest/:doctorId", isAuth, patientController.sendVideoRequest);
 
 //routes for inside prediction page
