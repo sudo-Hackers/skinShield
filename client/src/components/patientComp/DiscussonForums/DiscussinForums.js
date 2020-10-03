@@ -2,18 +2,25 @@ import React, { Component } from 'react';
 import {Card,Form,Button} from 'react-bootstrap';
 import {connect} from 'react-redux';
 import Axios from 'axios';
+import {setBlogs} from '../../../Redux/Patient/Patient.action';
 
 import './DiscussionForums.css';
+
 
 class DiscussionForums extends Component{
     constructor(props){
         super(props);
         this.state = {
-            blog : ''
+            blog : '',
+            name : '',
+            blogs : []
         }
     }
 
     componentDidMount () {
+        let patient = {...this.props.profileData}
+
+        this.setState({name : patient.name})
         const options = {
             url: `${process.env.REACT_APP_LINK}/api/patient/getForum`,
             method: 'GET',
@@ -22,17 +29,21 @@ class DiscussionForums extends Component{
             },
           };
           Axios(options).then((res) => {
-            console.log(res.data);
+            this.setState({blogs : res.data.data});
           });
+
     }
 
     onChangeHandler = e => {
         this.setState({blog : e.target.value});
+
     }
 
-    submitHandler(e){
+    submitHandler = e => {
         e.preventDefault();
-        let patient = {...this.props.profileData}
+        console.log(this.state.name);
+        var name = this.state.name;
+        var blog = this.state.blog; 
         const options = {
             url: "http://localhost:3001/api/patient/saveForum",
             method: 'POST',
@@ -41,18 +52,28 @@ class DiscussionForums extends Component{
                 Authorization: 'Bearer ' + localStorage.getItem('token')
             },
             data: {
-                author: patient.name,
-                blog : this.state.blog
+                author: name,
+                blog : blog
             }
         };
+        console.log(options.data);
         Axios(options).then(res => {
             console.log(res);
         }).catch(err => {
             console.log(err);
         })
+        this.setState (state => {
+            return{
+            blogs : [...state.blogs,options.data],
+            blog : ""
+            }
+        })
+       
     
     }
     render(){
+        console.log(this.state.blogs);
+        console.log(this.state.name);
         return(
             <div  className="DiscussF">
                 <Card style={{width: '50rem' ,textAlign:'center'}}>
@@ -64,7 +85,7 @@ class DiscussionForums extends Component{
       <Form>
       <Form.Group controlId="exampleForm.ControlTextarea1">
     <Form.Label>Your Blog</Form.Label>
-    <Form.Control as="textarea" rows="3" />
+    <Form.Control as="textarea" rows="3" onChange={this.onChangeHandler} />
   </Form.Group>
   <Button variant="outline-info" style={{width: '40%' , borderRadius : '20px'}} onClick={this.submitHandler}>SUBMIT</Button>
       </Form>
@@ -80,5 +101,8 @@ let mapStateToProps = function mapStateToProps(state) {
         profileData : state.patient.patientProfile
     }
 }
-
-export default connect(mapStateToProps)(DiscussionForums);
+ 
+const mapDispatchToProps = (dispatch) => ({
+    setBlogs: (blog) => dispatch(setBlogs(blog)),
+  });
+export default connect(mapStateToProps,mapDispatchToProps)(DiscussionForums);

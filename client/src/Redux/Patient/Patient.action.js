@@ -40,3 +40,7 @@ export const setRead = read => ({
     type : PatientActions.SET_READ,
     payload : read
 });
+export const setBlogs = blog => ({
+    type : PatientActions.SET_BLOGS,
+    payload : blog
+})

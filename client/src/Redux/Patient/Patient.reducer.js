@@ -11,7 +11,8 @@ const INITIAL_STATE = {
     covid : [],
     doctorpanel : [],
     covidTracker : [],
-    read : []
+    read : [],
+    blogs: []
 }
 
 const PatientReducer = (state = INITIAL_STATE , action) => {
@@ -65,6 +66,11 @@ const PatientReducer = (state = INITIAL_STATE , action) => {
             return{
                 ...state,
                 read : [...state.read , action.payload]
+            }
+        case PatientActions.SET_BLOGS : 
+            return {
+                ...state,
+                blogs : action.payload
             }
             default:
                 return state;
