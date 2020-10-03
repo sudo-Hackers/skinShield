@@ -19,7 +19,7 @@ exports.getProfile = async(req, res, next) => {
         for(let i=0;i<result.length;i++){
             const patId = result[i].patientId;
             const data = await Patient.findById(patId);
-            const monData = await Monitor.findOne({patientId: patId});
+            const monData = await Monitor.find({patientId: patId});
             const patientData = {};
             patientData.profile = data;
             patientData.monitor = monData;
