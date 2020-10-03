@@ -1,25 +1,30 @@
 
 .Login{
-    min-height: 70vh;
+    min-height: 68vh;
     overflow: hidden;
     display: flex;
     flex-direction: row;
     padding-top: 50px;
     padding-top: 60px;
+    
+    background-repeat: no-repeat;
+    
+    
 }
 
 
 .FormD{
     margin: auto;
-    width: 40%;
+    width: 30%;
     text-align: center;
     box-shadow: 0 2px 3px #ccc;
     border: none;
     box-sizing: border-box;
     overflow: hidden;
     height: 35vh;
-    transform:translateY(70px)
-    translateX(-120px);
+    transform: translateX(50px)
+    translateY(-60px);
+    
     
     
 }
@@ -72,24 +77,24 @@
 
 
 .Img{
-    height: 170px;
-    width: 200px;
-    border-radius: 200px;
-    transform: translateY(40px)
-    translateX(320px);
+ 
+    width: 600px;
+    border-radius: 70px;
+    transform: rotate(-30deg);
 }
 .FormP{
     margin: 20px auto;
-    width: 40%;
-    height: 55vh;
+    width: 30%;
+    height: 35vh;
     text-align: center;
     box-shadow: 0 2px 3px #ccc;
     border: none;
     padding: 10px;
     box-sizing: border-box;
     overflow: hidden;
-    transform: translateY(167px)
-    translateX(60px);
+    transform: translateX(10px)
+    translateY(50px);
+    
 }
 .FormP button{
     background: transparent;

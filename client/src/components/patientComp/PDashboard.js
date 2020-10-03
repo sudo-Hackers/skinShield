@@ -116,16 +116,7 @@ class Pdashboard extends Component {
                 <Card.Body>
                   <Card.Title>Your Breif Records</Card.Title>
                   <Card.Text>
-                    Hello , {patient.name} you are suffering from {patient.disease} and some of the medicine you are intaking are
-                {
-                      this.props.medicines.map((med) => {
-                        return (
-                          <Card.Text>{med}{' '}</Card.Text>
-                        );
-
-                      })
-                    }
-                Your weight is {patient.weight}.
+                    Hello , {patient.name}
               </Card.Text>
                 </Card.Body>
               </Card>

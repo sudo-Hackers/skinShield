@@ -100,14 +100,12 @@ class PatientLogin extends Component {
         );
         return (
             <div className="Login">
-               
+               <img src="https://ww3.frost.com/files/cache/defeefe545b2d331548795fdc936de24_f17859.jpg" className="Img"/>
 
                 <div className="FormP">
                     <h1>Login as a Patient!</h1>
                     {form}
                 </div>
-
-                <img src="https://i.pinimg.com/564x/54/98/60/549860c0b63c45f3223e997f81b04df7.jpg" alt="pat" className="Imgg" />
             </div>
         );
     }
