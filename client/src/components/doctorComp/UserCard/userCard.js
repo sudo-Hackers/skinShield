@@ -17,6 +17,7 @@ class Cards extends Component {
     
 
     onClick = (e) =>{
+        
         e.preventDefault();
         localStorage.setItem('patId',this.props.user._id);
         this.setState({redirectToPrescribePage: true});

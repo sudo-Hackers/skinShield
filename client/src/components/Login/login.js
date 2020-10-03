@@ -8,8 +8,8 @@ import Patientlogin from '../loginForm/patientLogin';
 
 
 class Login extends Component{
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
             docRedirect: false
         }
@@ -18,10 +18,10 @@ class Login extends Component{
     render(){
         let redirect = null;
         if(this.state.docRedirect){
-            redirect = <Doclogin/>
+            redirect = <Doclogin onLogin = {this.props.onLoginDoctor}/>
         }
         else {
-            redirect = <Patientlogin/>
+            redirect = <Patientlogin onLogin = {this.props.onLoginPatient}/>
         }
         return(
             <div style={{textAlign: 'center' , paddingTop: '80px' }}>

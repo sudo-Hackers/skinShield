@@ -8,7 +8,6 @@ import {
 } from '../../Redux/Doctor/Doctor.Actions';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { IconButton } from '@material-ui/core';
-import PatientMonitored from './PatientMonitored';
 import { Card, Button } from 'react-bootstrap';
 import './Dashboard.css';
 import Report from './Report';
