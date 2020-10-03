@@ -233,11 +233,11 @@ const predictCancer = async (url) => {
         const model = await tf.loadLayersModel(process.env.MODEL_PATH + '/tfjs-models/model1/model.json');
         const prediction = await model.predict(img2).array();
         var report;
-        var cancerDetect = ['Benign', 'Malignant'];
+        var cancerDetect = ['Benign or Non cancerous', 'Malignant or Cancer'];
         if (prediction[0][0] > prediction[0][1]) {
             report = cancerDetect[0];
         } else {
-            var cancerType = ['bcc', 'nv', 'melanoma'];
+            var cancerType = ['Basal cell carcinoma', 'Melanocytic nevi', 'Melanoma'];
             var img3 = img.resizeNearestNeighbor([128, 128]).toFloat().div(255.0);
             var img4 = img3.reshape([1, 128, 128, 3]);
 
@@ -252,6 +252,24 @@ const predictCancer = async (url) => {
                 report = cancerType[i];
             }
         }
+        return report;
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+const predictClickCancer = async (url) => {
+    try {
+        const imgContents = fs.readFileSync(url);
+        const img = tfn.node.decodeImage(imgContents, channels = 3);
+        var img1 = img.resizeNearestNeighbor([128, 128]).toFloat().div(255.0);
+        var img2 = img1.reshape([1, 128, 128, 3]);
+        const model = await tf.loadLayersModel(process.env.MODEL_PATH + '/tfjs-models/model3/model.json');
+        const prediction = await model.predict(img2).array();
+        var report;
+        var cancerDetect = ['Benign or Non cancerous','Basal cell carcinoma', 'Melanocytic nevi', 'Melanoma'];
+        let i = prediction[0].indexOf(Math.max(...prediction[0]));
+        report = cancerDetect[i];
         return report;
     } catch (err) {
         console.log(err);
@@ -293,7 +311,7 @@ exports.postClickPhoto = async (req, res, next) => {
         const result = await idu.outputFile(dataUri, filePath);
         console.log(result);
         const url = 'images/' + dt + '.png';
-        const report = await predictCancer(url);
+        const report = await predictClickCancer(url);
         console.log(report);
         const monitor = new Monitor({
             patientId: id,
@@ -349,7 +367,7 @@ exports.postTrialClick = async (req, res, next) => {
         const result = await idu.outputFile(dataUri, filePath);
         console.log(result);
         const url = 'images/' + dt + '.png';
-        const report = await predictCancer(url);
+        const report = await predictClickCancer(url);
         console.log(report);
         res.status(200).json({
             data: report

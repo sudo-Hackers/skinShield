@@ -31,7 +31,7 @@ function Came(props){
         };
         Axios(options).then(res => {
             console.log(res);
-            setReport(res.data.data.report);
+            setReport(res.data.data);
             setSubmit(true);
         }).catch(err => {
             console.log(err);
