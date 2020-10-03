@@ -39,9 +39,9 @@ function Came(props){
     }
 
     return (
-        <div>
+        <div style={{textAlign: 'center'}}>
             {click && <div><h2>Photo clicked</h2><img src={uri} />
-                <div>
+                <div style={{marginTop: '10px'}}>
                     <Button onClick={onPredict}>Predict</Button>
                 </div></div>}
             {!isSubmitted && !click && <Camera
