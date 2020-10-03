@@ -4,3 +4,9 @@
     align-items: 'center';
     transform: translateX(350px);
 }
+.blogs{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 20px;
+    transform: translateX(120px);
+}
