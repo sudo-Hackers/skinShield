@@ -100,10 +100,9 @@ class DocLogin extends Component {
         );
         return (
             <div className="Login">
-                <img src="https://i.pinimg.com/564x/a6/74/c2/a674c29ddf986e8ad938ac942574f6c5.jpg" alt="doc" className="Img" />
-
+                <img src="https://ww3.frost.com/files/cache/defeefe545b2d331548795fdc936de24_f17859.jpg" className="Img"/>
                 <div className="FormD">
-                    <h1>Login as a doctor!</h1>
+                    <h1>Hey Doctor!!</h1>
                     {form}
                 </div>
 

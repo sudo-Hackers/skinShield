@@ -1,35 +1,31 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import "./login.css";
+import {Form} from 'react-bootstrap';
+import { FormControlLabel , Switch} from '@material-ui/core';
+import Doclogin from '../loginForm/docLogin';
+import Patientlogin from '../loginForm/patientLogin';
+
 
 class Login extends Component{
     constructor(){
         super();
         this.state = {
-            docRedirect: false,
-            patientRedirect: false
+            docRedirect: false
         }
-    }
-
-    onClick1 = () => {
-        this.setState({ docRedirect: true});
-    }
-
-    onClick2 = () => {
-        this.setState({patientRedirect: true});
     }
 
     render(){
         let redirect = null;
         if(this.state.docRedirect){
-            redirect = <Redirect to="/docLogin" />
+            redirect = <Doclogin/>
         }
-        if(this.state.patientRedirect){
-            redirect = <Redirect to="/patientLogin" />
+        else {
+            redirect = <Patientlogin/>
         }
         return(
-            <div>
-                <div className="signup-buttons">
+            <div style={{textAlign: 'center' , paddingTop: '80px' }}>
+                {/*<div className="signup-buttons">
                     <div className="Doclogin">
                     <button onClick={this.onClick1}>Login as Doctor</button>
                     </div>
@@ -37,8 +33,13 @@ class Login extends Component{
                     <button onClick={this.onClick2}>Login as Patient</button>
                     </div>
                 </div>
+        */}
+                <h2 style={{color: '#11455B',fontSize:'28px',fontFamily: 'Kaushan Script, cursive'}}>Login as a Doctor?</h2>
+                <FormControlLabel
+                    control={<Switch size="small" onChange={()=> this.setState({docRedirect: !this.state.docRedirect})} />}
+                />
                 {redirect}
-            </div>
+        </div>
         )
     }
 }
