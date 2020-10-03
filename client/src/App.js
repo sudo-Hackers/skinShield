@@ -42,6 +42,7 @@ import ChatBot from './components/chatbot/chatbot';
 import Map from './components/map/map';
 import Report from './components/patientComp/report/Report';
 import Camera from './components/patientComp/Camera/camera';
+import TrialCamera from './components/patientComp/Camera/trialCamera';
 
 import Axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -360,6 +361,9 @@ class App extends Component {
           <TrialTest {...props}/>
         )}> 
         </Route>
+        <Route exact path="/trialCamera">
+            <TrialCamera />  
+          </Route>
         <Redirect to="/" />
       </Switch>
     );

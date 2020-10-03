@@ -18,22 +18,21 @@ router.get("/getPrescription/:doctorId", isAuth, patientController.getPrescripti
 
 router.post("/sendProblem/:doctorId", isAuth, patientController.sendProblem);
 
-router.post("/saveMonitorData", isAuth, patientController.saveMonitorData);
-
 router.get("/sendVideoRequest/:doctorId", isAuth, patientController.sendVideoRequest);
 
+//routes for inside prediction page
 router.post('/photos', isAuth, patientController.postPhoto);
-
-router.get('/photos', isAuth, patientController.getPhoto);
-
-router.get('/photos/:id', patientController.getSinglePhoto);
-
-router.post('/trialPhoto', patientController.postTrialPhoto);
-
 router.post('/savePhoto', isAuth, patientController.postClickPhoto);
 
-router.post('/saveForum', isAuth, patientController.saveForum);
+//routes for report page
+router.get('/photos', isAuth, patientController.getPhoto);
 
+// routes for trial prediction page
+router.post('/trialPhoto', patientController.postTrialPhoto);
+router.post('/trialClick', patientController.postTrialClick);
+
+//routes for discussion forum
+router.post('/saveForum', isAuth, patientController.saveForum);
 router.get('/getForum', isAuth, patientController.getForum);
 
 // routes for testing purpose
