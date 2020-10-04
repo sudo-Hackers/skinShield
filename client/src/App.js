@@ -122,7 +122,7 @@ class App extends Component {
     console.log(process.env);
     event.preventDefault();
     const options = {
-      url: `${process.env.REACT_APP_LINK}/api/auth/patientLogin`,
+      url: `http://localhost:3001/api/auth/patientLogin`,
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -181,7 +181,7 @@ class App extends Component {
     console.log(process.env.REACT_APP_LINK);
     event.preventDefault();
     const options = {
-      url: `${process.env.REACT_APP_LINK}/api/auth/docLogin`,
+      url: `http://localhost:3001/api/auth/docLogin`,
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -231,7 +231,7 @@ class App extends Component {
   patientSignupHandler = (event, authData) => {
     event.preventDefault();
     const options = {
-      url: `${process.env.REACT_APP_LINK}/api/auth/patientSignup`,
+      url: `http://localhost:3001/api/auth/patientSignup`,
       method: 'PUT',
       headers: {
         Accept: 'application/json',
@@ -270,7 +270,7 @@ class App extends Component {
   docSignupHandler = (event, authData) => {
     event.preventDefault();
     const options = {
-      url: `${process.env.REACT_APP_LINK}/api/auth/docSignup`,
+      url: `http://localhost:3001/api/auth/docSignup`,
       method: 'PUT',
       headers: {
         Accept: 'application/json',

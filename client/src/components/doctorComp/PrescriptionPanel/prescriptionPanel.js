@@ -15,7 +15,7 @@ class prescription extends Component {
   componentDidMount() {
     this.setState({loading:true});
     const options = {
-      url: `${process.env.REACT_APP_LINK}/api/doctor/getPatients`,
+      url: `http://localhost:3001/api/doctor/getPatients`,
       method: 'GET',
       headers: {
         Authorization: 'Bearer ' + localStorage.getItem('token'),

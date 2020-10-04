@@ -80,7 +80,7 @@ class PatProfile extends Component {
     console.log(this.state);
 
     const options = {
-      url: `${process.env.REACT_APP_LINK}/api/patient/saveProfile`,
+      url: `http://localhost:3001/api/patient/saveProfile`,
       method: 'POST',
       headers: {
         Accept: 'application/json',

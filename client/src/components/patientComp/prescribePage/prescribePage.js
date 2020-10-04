@@ -26,7 +26,7 @@ class prescribePage extends Component {
     this.setState({ loading: true });
     console.log(id);
     const options = {
-      url: `${process.env.REACT_APP_LINK}/api/patient/getPrescription/` + id,
+      url: `http://localhost:3001/api/patient/getPrescription/` + id,
       method: 'GET',
       headers: {
         Authorization: 'Bearer ' + localStorage.getItem('token'),
@@ -45,7 +45,7 @@ class prescribePage extends Component {
     var time = d.toLocaleString();
     const id = localStorage.getItem('docId');
     const options = {
-      url: `${process.env.REACT_APP_LINK}/api/patient/sendProblem/` + id,
+      url: `http://localhost:3001/api/patient/sendProblem/` + id,
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -76,7 +76,7 @@ class prescribePage extends Component {
     console.log(id);
     const options = {
 
-      url: `${process.env.REACT_APP_LINK}/api/patient/sendVideoRequest/` + id,
+      url: `http://localhost:3001/api/patient/sendVideoRequest/` + id,
 
       method: 'GET',
       headers: {

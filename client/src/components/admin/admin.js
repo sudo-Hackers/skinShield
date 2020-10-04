@@ -17,7 +17,7 @@ class Admin extends Component {
     componentDidMount() {
         this.setState({ loading: true });
         const options = {
-            url: `${process.env.REACT_APP_LINK}/api/admin/data`,
+            url: `http://localhost:3001/api/admin/data`,
             method: 'GET'
         };
         Axios(options)

@@ -14,7 +14,7 @@ class invitation extends Component {
 
   componentDidMount() {
     const options = {
-      url: `${process.env.REACT_APP_LINK}/api/doctor/checkInvitation`,
+      url: `http://localhost:3001/api/doctor/checkInvitation`,
       method: 'GET',
       headers: {
         Authorization: 'Bearer ' + localStorage.getItem('token'),

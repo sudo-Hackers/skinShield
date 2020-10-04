@@ -68,7 +68,7 @@ class DocProfile extends Component {
     console.log(this.state);
 
     const options = {
-      url: `${process.env.REACT_APP_LINK}/api/doctor/saveProfile`,
+      url: `http://localhost:3001/api/doctor/saveProfile`,
       method: 'POST',
       headers: {
         Accept: 'application/json',

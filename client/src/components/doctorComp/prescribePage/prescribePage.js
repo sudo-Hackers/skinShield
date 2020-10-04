@@ -28,7 +28,7 @@ class prescribePage extends Component {
   componentDidMount() {
     const id = localStorage.getItem('patId');
     const options = {
-      url: `${process.env.REACT_APP_LINK}/api/doctor/getPrescription/` + id,
+      url: `http://localhost:3001/api/doctor/getPrescription/` + id,
       method: 'GET',
       headers: {
         Authorization: 'Bearer ' + localStorage.getItem('token'),
@@ -51,7 +51,7 @@ class prescribePage extends Component {
     var time = d.toLocaleString();
     const id = localStorage.getItem('patId');
     const options = {
-      url: `${process.env.REACT_APP_LINK}/api/doctor/addPrescription/` + id,
+      url: `http://localhost:3001/api/doctor/addPrescription/` + id,
       method: 'POST',
       headers: {
         Accept: 'application/json',

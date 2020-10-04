@@ -2,7 +2,7 @@ import React from 'react';
 import { Card } from 'react-bootstrap';
 
 const Photo = ({ id, report, date }) => {
-  const url = `${process.env.REACT_APP_LINK}/${id}`;
+  const url = `http://localhost:3001/${id}`;
   console.log(url);
   return (
     <Card className="photo" style={{width: '80%'}}>

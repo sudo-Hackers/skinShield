@@ -1,14 +1,15 @@
 {
   "name": "medico",
   "version": "1.0.0",
-  "description": "Team members: * Saiprava Raut * Shubhadarshie Nanda",
+  "description": "Team members: * Saiprava Raut * Shubhadarshie Nanda * Chandra Preethi * Ritvik Nimmagada",
   "main": "app.js",
   "scripts": {
     "server": "nodemon app.js",
     "start-server": "node app.js",
     "client": "npm start --prefix client",
     "build": "npm run build --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "install": "concurrently \"npm install server\" \"npm install client\""
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,7 @@
     "@tensorflow/tfjs-node": "^2.4.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
+    "client": "file:client",
     "concurrently": "^5.3.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
@@ -43,6 +45,7 @@
     "nodemailer": "^6.4.11",
     "nodemailer-sendgrid-transport": "^0.2.0",
     "nodemon": "^2.0.4",
+    "server": "^1.0.30",
     "twilio": "^3.48.2",
     "web-push": "^3.4.4",
     "xss-clean": "^0.1.1"

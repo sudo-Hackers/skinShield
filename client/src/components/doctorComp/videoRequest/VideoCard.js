@@ -19,7 +19,7 @@ class VideoCard extends React.Component {
         e.preventDefault();
         const id = this.state.user.patient._id;
         const options = {
-          url: `${process.env.REACT_APP_LINK}/api/doctor/saveAppointments/`+ id,
+          url: `http://localhost:3001/api/doctor/saveAppointments/`+ id,
           method: 'POST',
           headers: {
             Authorization: 'Bearer ' + localStorage.getItem('token'),

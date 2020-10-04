@@ -41,7 +41,7 @@ class Pdashboard extends Component {
 
   componentDidMount() {
     const options = {
-      url: `${process.env.REACT_APP_LINK}/api/patient/getProfile`,
+      url: `http://localhost:3001/api/patient/getProfile`,
       method: 'GET',
       headers: {
         Authorization: 'Bearer ' + localStorage.getItem('token'),
@@ -79,7 +79,7 @@ class Pdashboard extends Component {
     console.log(photoForm);
     console.log(this.state.fle);
     const options = {
-      url: `${process.env.REACT_APP_LINK}/api/patient/photos`,
+      url: `http://localhost:3001/api/patient/photos`,
       method: 'POST',
       headers: {
         'Content-Type': 'multipart/form-data',
@@ -186,14 +186,20 @@ class Pdashboard extends Component {
         </Card>
         {this.state.showReport &&
         <Card style={{marginTop: '20px' , textAlign: 'center'}}>
-          <Card.Title>Your Report </Card.Title>
-          <Card.Text>You are detected to have {this.state.report} type of cancer.</Card.Text>
-          <Card.Text style={{fontWeight: 'bold'}}>Treatment or Prevention Steps</Card.Text>
+          <Card.Title style={{fontWeight: 'bold' , fontSize: '30px', color: 'blue'}}>Your Report </Card.Title>
+          <Card.Text>You are diagonsed with <b>{this.state.report} </b> type of cancer.</Card.Text>
+          <Card.Text style={{fontWeight: 'bold' , fontSize: '30px', color: 'blue'}}>Treatment or Prevention Steps</Card.Text>
           {
+
             Data[this.state.report].map((d) => {
               return(
               <Card.Text>
-                {d}
+                <ul type="circle">
+                  <li>
+                    {d}
+                  </li>
+                </ul>
+                
               </Card.Text>
               );
             })
@@ -207,7 +213,7 @@ class Pdashboard extends Component {
   <Card.Body>
     <Card.Title>Discussion forums</Card.Title>
     <Card.Text>
-      Share your experiances and read people's experiance regarding this disease...
+      Share your experiences and read people's experience regarding skin cancer .
     </Card.Text>
     <Button variant="primary" onClick={() => this.setState({discuss : true})}>Read blogs!!!</Button>
   </Card.Body>

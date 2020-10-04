@@ -20,7 +20,7 @@ class Cards extends Component {
     e.preventDefault();
     const id = this.props.user._id;
     const options = {
-      url: `${process.env.REACT_APP_LINK}/api/patient/sendRequest/` + id,
+      url: `http://localhost:3001/api/patient/sendRequest/` + id,
       method: 'GET',
       headers: {
         Authorization: 'Bearer ' + localStorage.getItem('token'),
