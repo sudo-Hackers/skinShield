@@ -20,3 +20,23 @@
     padding: 40px;
     transform: translateX(200px);
 }
+
+@media (max-width: 500px){
+    .Pdash{
+        height: 100%;
+        display: flex;
+        display: row;
+    }
+    .dasPat{
+        display: flex;
+        flex-direction: column;
+        padding-top:80px;
+        align-items: center;
+    }
+    .Dascard{
+        padding: 20px;
+    }
+    .Discussion{
+        padding: 40px;
+        }
+}

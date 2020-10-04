@@ -45,7 +45,7 @@ class prescribePage extends Component {
     var time = d.toLocaleString();
     const id = localStorage.getItem('docId');
     const options = {
-      url: `${process.env.REACT_APP_LINK}/api/patient/sendProblem/` + id,
+      url: `http://localhost:3001/api/patient/sendProblem/` + id,
       method: 'POST',
       headers: {
         Accept: 'application/json',

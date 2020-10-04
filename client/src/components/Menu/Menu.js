@@ -35,8 +35,8 @@ class Menu extends Component {
                 <div className="Doc">
                     
        
-            <div style={{padding: '20px',transform: 'translateX(-120px) translateY(-40px)'}}>
-        <Card border="primary" style={{ width: '23rem',float:'right', padding: '30px 0'}}>
+            <div className="Doccard">
+        <Card border="primary" className="cardStyle" style={{ width: '23rem',float:'right', padding: '30px 0'}}>
     
     <Card.Body style={{fontSize: '23px'}}>
       <Card.Title style={{fontSize : '25px'}}>Get Started!!</Card.Title>

@@ -1,5 +1,5 @@
 {
-  "name": "SkinShield",
+  "name": "medico",
   "version": "1.0.0",
   "description": "Team members: * Saiprava Raut * Shubhadarshie Nanda * Chandra Preethi * Ritvik Nimmagada",
   "main": "app.js",
@@ -45,6 +45,7 @@
     "nodemailer": "^6.4.11",
     "nodemailer-sendgrid-transport": "^0.2.0",
     "nodemon": "^2.0.4",
+    "server": "^1.0.30",
     "twilio": "^3.48.2",
     "web-push": "^3.4.4",
     "xss-clean": "^0.1.1"
