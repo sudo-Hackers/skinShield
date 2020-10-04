@@ -126,6 +126,7 @@ Skin shield is progressive web application that is installable and it gives an a
 **For backend, ML model and web app**
 * node and npm installed
 * Ensure Python 2.x is installed
+* Ensure your system has only 2.x version not more than one versions
 * Ensure node-gyp is installed(npm install -g node-gyp)
 * Ensuire windows buil tool is installed(npm install -g --production windows-build-tools)
 
