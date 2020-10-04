@@ -88,7 +88,7 @@ Skin shield is progressive web application that is installable and it gives an a
 
 ## Challenges we ran into
 
-* Accuracy in predicting the correct type of skin-cancer.
+* Overfitting of the deep learning model because of no proper dataset
 
 * Configuring the dependencies while integrating the deep learning model.
 
