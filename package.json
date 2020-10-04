@@ -4,12 +4,8 @@
   "description": "Team members: * Saiprava Raut * Shubhadarshie Nanda * Chandra Preethi * Ritvik Nimmagada",
   "main": "app.js",
   "scripts": {
-    "server": "nodemon app.js",
-    "start-server": "node app.js",
-    "client": "npm start --prefix client",
-    "build": "npm run build --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "install": "concurrently \"npm install server\" \"npm install client\""
+    "start": "nodemon app.js",
+    "start-server": "node app.js"
   },
   "repository": {
     "type": "git",

@@ -7,8 +7,11 @@
 This is under development phase
 Complete practical(Production) build is still under development
 ```
+![](assets/images/Capture.PNG)
 
 ### An all in one digital platform which bridges the gap between the patients and physicians for better care of your health during these days under monitorization from doctors. 
+
+### [You can get all details here](https://drive.google.com/drive/folders/1QYLNXEYxfQbwQfK4mbPGXunJ73OR4RgL?usp=sharing)
 
 ## 📌 Inspiration
 Skin Cancer is the most common of all cancers. The number of deaths due to skin cancer is being increased at a rapid rate. However, the survival rate for skin cancer is near 99% when detected at an "Early Stage". So it is best to detect skin cancer as early as possible. 
@@ -62,6 +65,15 @@ Skin shield is progressive web application that is installable and it gives an a
 
 * Coming to rural uneducated people, we have developed a chatbot which can guide them to use the app. For minor consultation, chatbot can also provide you with the medicines details and the doctors details for easy use.
 
+
+## Screenshots
+
+![](assets/images/Captur2.PNG)
+![](assets/images/Capture8.PNG)
+![](assets/images/Capture9.PNG)
+![](assets/images/Capture11.PNG)
+![](assets/images/Capture13.PNG)
+
 ## How we built it 🏁 Technology Stack
 
 **Frontend**
@@ -107,23 +119,78 @@ Skin shield is progressive web application that is installable and it gives an a
 * We need to think of a flexible and user friendly UI for smooth interaction between doctor and patient.
 
 
-## .env file inside client
-REACT_APP_PUBLIC_VAPID_KEY= ''
-REACT_APP_LINK = 'http://localhost:3001'
+## Prerequisties
 
-## .env file in the main folder
+**For backend, ML model and web app**
+* node and npm installed
+* Ensure Python 2.x is installed
+* Ensure node-gyp is installed(npm install -g node-gyp)
+* Ensuire windows buil tool is installed(npm install -g --production windows-build-tools)
+
+**For android app** 
+* node, npm and react native cli installed 
+
+## Installation & Setup 
+
+A step by step series of examples that tell you how to get a development env running
+
+**To start the server**
+Go to root of the project, run
+
+```
+npm install
+```
+
+```
+npm start
+```
+
+Server will be running on localhost
+
+**To start the web app**
+Go to root of the project, run
+
+```
+cd client
+```
+
+```
+npm install
+```
+
+```
+npm start
+```
+
+A react app will be running on your browser.
+
+
+**set up env file**
+
+In the root directory
+
+```
 MONGODB_URI = ''
 api_key = ''
-
-
-WEB_PUSH_CONTACT = 'mailto: b518045@iiit-bh.ac.in'
+MODEL_PATH = 'file://E:/WORKSPACE/skin_shield/skinShield'(example)
+WEB_PUSH_CONTACT = ''
 PUBLIC_VAPID_KEY = ''
 PRIVATE_VAPID_KEY = ''
 
-## steps to start it in development mode
-1. npm i --save inside client 
-2. npm i --save in the main folder
-3. npm start in the main folder(server)
-4. npm start inside client(client)
-5. client runs in 3000 and server in 3001
-6. now ready to go
+```
+
+Inside the client
+
+```
+REACT_APP_PUBLIC_VAPID_KEY= ''
+REACT_APP_LINK = 'http://localhost:3001'
+
+```
+
+## Team Members
+* Ritvik Nimagada           
+* Preethi Chandra
+* Saiprava Raut
+* Shubhadarshie Nanda
+
+ **Made with ❤ Team sudoHackers**
