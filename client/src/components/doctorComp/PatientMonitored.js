@@ -35,7 +35,7 @@ class PatientMonitored extends Component {
                                 <Card.Body>
                                 <Card.Title>{pat.profile.name}</Card.Title>
     
-                                    {pat.monitor!==null? <Card.Text>This are my predicted data.</Card.Text> : <Card.Text>Sorry!!I have not monitored myself yet!!</Card.Text>}
+                                    {pat.monitor.length !== 0? <Card.Text>This are my predicted data.</Card.Text> : <Card.Text>Sorry!!Patient has not started monitoring!!</Card.Text>}
                                     {console.log(pat.monitor)}
                                     <div className="repo">
                                     {

@@ -35,7 +35,5 @@ router.post('/trialClick', patientController.postTrialClick);
 router.post('/saveForum', isAuth, patientController.saveForum);
 router.get('/getForum', isAuth, patientController.getForum);
 
-// routes for testing purpose
-router.get('/prediction', patientController.getPrdiction);
 
 module.exports = router;
