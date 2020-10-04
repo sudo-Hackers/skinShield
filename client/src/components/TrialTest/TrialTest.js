@@ -128,7 +128,13 @@ class Trialtest extends Component {
         {this.state.showReport &&
         <Card style={{marginTop: '20px' , textAlign: 'center'}}>
           <Card.Title>Your Report </Card.Title>
+          <Card.Text>
           You are detected to have {this.state.report} type of cancer.
+          </Card.Text>
+          <Card.Text style={{fontSize: '48px'}}>
+             Possible preventions or treatment!!
+          </Card.Text>
+          
           {
             Data[this.state.report].map((d) => {
               return(

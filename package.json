@@ -4,8 +4,11 @@
   "description": "Team members: * Saiprava Raut * Shubhadarshie Nanda",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js",
-    "start-server": "node app.js"
+    "server": "nodemon app.js",
+    "start-server": "node app.js",
+    "client": "npm start --prefix client",
+    "build": "npm run build --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",
@@ -23,6 +26,7 @@
     "@tensorflow/tfjs-node": "^2.4.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
+    "concurrently": "^5.3.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-mongo-sanitize": "^2.0.0",
