@@ -36,7 +36,7 @@ class Login extends Component{
         */}
                 <h2 style={{color: '#11455B',fontSize:'28px',fontFamily: 'Kaushan Script, cursive'}}>Login as a Doctor?</h2>
                 <FormControlLabel
-                    control={<Switch size="small" onChange={()=> this.setState({docRedirect: !this.state.docRedirect})} />}
+                    control={<Switch size="normal" onChange={()=> this.setState({docRedirect: !this.state.docRedirect})} />}
                 />
                 {redirect}
         </div>

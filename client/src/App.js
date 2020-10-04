@@ -49,6 +49,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { setPatient } from './Redux/Patient/Patient.action';
 import { connect } from 'react-redux';
 import Chat from 'twilio/lib/rest/Chat';
+import PatientMonitored from './components/doctorComp/PatientMonitored';
 
 
 class App extends Component {
@@ -328,23 +329,12 @@ class App extends Component {
         <Route path="/" exact>
           <Menu />
         </Route>
-        <Route path="/signup" exact>
-          <Signup />
+        <Route path="/signup" exact
+        render = {(props) => (
+          <Signup {...props} onSignupDoc={this.docSignupHandler} onSignupPatient={this.patientSignupHandler} />
+        )}>
+          
         </Route>
-        <Route
-          path="/docSignup"
-          exact
-          render={(props) => (
-            <DocSignup {...props} onSignup={this.docSignupHandler} />
-          )}
-        />
-        <Route
-          path="/patientSignup"
-          exact
-          render={(props) => (
-            <PatientSignup {...props} onSignup={this.patientSignupHandler} />
-          )}
-        />
         <Route path="/login" exact
         render={(props) => (
           <Login {...props} onLoginDoctor={this.docLoginHandler} onLoginPatient={this.patientLoginHandler}/>
@@ -393,6 +383,9 @@ class App extends Component {
             path="/patientProfile/:id"
             render={(props) => <InvProfile {...props} />}
           />
+          <Route
+          path="/details/:id"
+          render={(props) => <PatientMonitored {...props}/>}/>
          
         </Switch>
       );
