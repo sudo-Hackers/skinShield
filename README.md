@@ -62,6 +62,49 @@ Skin shield is progressive web application that is installable and it gives an a
 
 * Coming to rural uneducated people, we have developed a chatbot which can guide them to use the app. For minor consultation, chatbot can also provide you with the medicines details and the doctors details for easy use.
 
+## How we built it 🏁 Technology Stack
+
+**Frontend**
+* [React](https://reactjs.org/)
+* [Redux](https://redux.js.org/)
+* [React-Bootstrap](https://react-bootstrap.github.io/)
+
+
+**Backend**
+* [Nodejs](https://nodejs.org/en/)
+* [mongoDB](https://www.mongodb.com/)
+* [nodemailer](https://nodemailer.com/about/)
+* [express](https://expressjs.com/)
+
+**Other**
+
+* [Mapquest](https://www.mapquest.com/)
+* [Here API](https://developer.here.com/)
+* [Google-Map-API](https://developers.google.com/maps/documentation)
+* [Stripe](https://stripe.com/in)
+* [IBMwatson-Assistant](https://www.ibm.com/cloud/watson-assistant/)
+* [PWA](https://web.dev/progressive-web-apps/)
+* [Helmet](https://helmetjs.github.io/)
+
+## Challenges we ran into
+
+* Accuracy in predicting the correct type of skin-cancer.
+
+* Configuring the dependencies while integrating the deep learning model.
+
+* Obtaining a well balanced dataset for skin cancer classification.
+
+* We need to make a robust architecture of database for such a big platform and organising events for both patient and doctor via virtual prescription.
+
+* We need to search for many packages capable of supporting the application in maintaining the application.
+
+* For tracking user's location and searching nearest hospitals  we need to search for appropriate packages and availability for APKs.
+
+* Planning for integrating an online payment system for ordering needs and delivering commodities.
+
+* Gathering data about local facilities for building the necessary modules.
+
+* We need to think of a flexible and user friendly UI for smooth interaction between doctor and patient.
 
 
 ## .env file inside client
