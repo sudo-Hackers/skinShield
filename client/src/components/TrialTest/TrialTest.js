@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { Form, Button, Card } from 'react-bootstrap';
+import { Form, Button, Card , Alert} from 'react-bootstrap';
 import Axios from 'axios';
 import AddAPhotoIcon from '@material-ui/icons/AddAPhoto';
 import { Redirect } from 'react-router-dom';
+import './TrialTest.css';
+import Data from '../../Assets/cancers (5).json';
 
 class Trialtest extends Component {
   constructor() {
@@ -57,12 +59,16 @@ class Trialtest extends Component {
 
 
   render() {
+    
+    console.log(Data[this.state.report]);
+
+
     var redirect2 = null;
     if (this.state.captureImage) {
       redirect2 = <Redirect to="/trialCamera" />;
     }
     return (
-      <div style={{ padding: '80px' }}>
+      <div className="Trial">
         <Card className="text-center">
 
           <Card.Body>
@@ -83,32 +89,56 @@ class Trialtest extends Component {
               onSubmit={this.state.showImage ? this.onSubmitPredict : this.uploadHandler}
               className="upload-form"
             >
-              {!this.state.showImage && <Form.Group>
-                <Form.Label>Choose photo to upload</Form.Label>
-                <Form.Control type="file" name="files" onChange={(e) => { this.setState({ fle: e.target.files[0] }) }} />
-              </Form.Group>}
+              {!this.state.showImage &&
+                <Form.File 
+                id="custom-file"
+                label="Select a File"
+                name="files"
+                onChange={(e) => { this.setState({ fle: e.target.files[0] }) }} 
+                custom
+                style={{marginBottom: '10px'}}
+              >
+                </Form.File>}
 
-              {this.state.showImage && <img src={this.state.imageURL} alt="upload-preview" height="200" width="200" />}
+              {this.state.showImage && <img src={this.state.imageURL} alt="upload-preview" height="200" width="200" style={{padding: '10px'}}/>}
               <Button
                 variant="primary"
                 type="submit"
+                
                 className={`${!this.state.fle ? 'disabled submit-btn' : 'submit-btn'}`}
                 disabled={this.state.fle ? false : true}
               >
                 {this.state.showImage ? "Predict" : "Upload"}
               </Button>
             </Form>
-            <div>
+            <div style={{padding: '10px'}}>
+              <h2 style={{color: '#11455B',fontSize:'28px',fontFamily: 'Kaushan Script, cursive'}}>OR</h2>
+            <Alert variant="info">
+        Take picture and zoom it to the spot which has to be detected!!
+  </Alert>
               <Button onClick={() => this.setState({ captureImage: true })}>
                 <AddAPhotoIcon />
               </Button>
 
             </div>
-            {this.state.showReport && <Card.Text>your report here!
-                  {this.state.report}</Card.Text>}
+         
 
           </Card.Body>
         </Card>
+        {this.state.showReport &&
+        <Card style={{marginTop: '20px' , textAlign: 'center'}}>
+          <Card.Title>Your Report </Card.Title>
+          You are detected to have {this.state.report} type of cancer.
+          {
+            Data[this.state.report].map((d) => {
+              return(
+              <Card.Text>
+                {d}
+              </Card.Text>
+              );
+            })
+          }
+          </Card>}
         {redirect2}
       </div>
     );
