@@ -73,6 +73,7 @@ Skin shield is progressive web application that is installable and it gives an a
 ![](assets/images/Capture9.PNG)
 ![](assets/images/Capture11.PNG)
 ![](assets/images/Capture13.PNG)
+![](assets/images/Capture125.PNG)
 
 ## How we built it 🏁 Technology Stack
 
@@ -87,6 +88,7 @@ Skin shield is progressive web application that is installable and it gives an a
 * [mongoDB](https://www.mongodb.com/)
 * [nodemailer](https://nodemailer.com/about/)
 * [express](https://expressjs.com/)
+* [tensorflowjs- model integration](https://www.tensorflow.org/js/models)
 
 **Other**
 
