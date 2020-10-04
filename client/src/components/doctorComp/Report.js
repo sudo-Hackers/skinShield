@@ -18,8 +18,8 @@ class Report extends Component{
             redirect = <Redirect to = {"/details/"+this.state.id}/>
         }
         return (
-            <div>
-                <Card>
+            <div className="Report">
+                <Card style={{width: '20rem' }}> 
                             <Card.Header>{this.state.users.name}</Card.Header>
   <Card.Body>
     <Card.Title>{this.state.users.name}'s report</Card.Title>
@@ -28,7 +28,6 @@ class Report extends Component{
     </Card.Text>
     <Button variant="primary" onClick = {()=> this.setState({redirect : true})}>View my report!</Button>
   </Card.Body>
-  <Card.Footer className="text-muted" >Your patient</Card.Footer>
   </Card>
   {redirect}
             </div>

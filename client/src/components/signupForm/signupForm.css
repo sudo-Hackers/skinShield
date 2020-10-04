@@ -7,16 +7,14 @@
 }
 
 .Form{
-    width: 50%;
+    width: 30%;
     text-align: center;
     box-shadow: 0 5px 5px #ccc;
     border: 1px solid #eee;
     padding: 10px;
     box-sizing: border-box;
     overflow: hidden;
-    transform: translateY(150px)
-    translateX(120px);
-    height: 75vh;
+    height: 60vh;
 
 }
 .Form button{
@@ -74,7 +72,7 @@
 
 
 .Formm{
-    width: 50%;
+    width: 30%;
     height: 100vh;
     text-align: center;
     box-shadow: 0 5px 5px #ccc;
@@ -82,9 +80,7 @@
     padding: 10px;
     box-sizing: border-box;
     overflow: hidden;
-    transform: translateY(150px)
-    translateX(120px);
-    height: 75vh;
+    height: 60vh;
     padding-top: 60px;
 }
 .Formm button{

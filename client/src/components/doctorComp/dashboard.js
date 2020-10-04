@@ -46,16 +46,18 @@ class dashboard extends Component {
     return (
       <div style={{paddingTop:"80px" , textAlign:"center", fontFamily: "sans-serif" ,fontSize:"15px"} }>
         {console.log(this.props.patient)}
-        <h1>Doctor dashboard!!</h1>
+        <h1>Your Patients</h1>
+        <div className="Patient">
         {this.props.patient.length > 0
           ? this.props.patient.map((pat) => {
               return (
-                <div className="Patient">
+              
                   <Report id={pat.profile.id} users={pat.profile}/>
-                </div>
+                
               );
             })
           : <h1>No Patients under monitor!!</h1>}
+          </div>
       </div>
     );
   }
