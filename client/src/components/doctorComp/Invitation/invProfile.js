@@ -20,7 +20,7 @@ class InvProfile extends Component {
     e.preventDefault();
     const id = this.props.match.params.id;
     const options = {
-      url: `${process.env.REACT_APP_LINK}/api/doctor/confirmInvitation/` + id,
+      url: `http://localhost:3001/api/doctor/confirmInvitation/` + id,
       method: 'GET',
       headers: {
         Authorization: 'Bearer ' + localStorage.getItem('token'),

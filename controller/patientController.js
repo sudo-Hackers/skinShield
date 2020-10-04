@@ -233,7 +233,7 @@ const predictCancer = async (url) => {
         const model = await tf.loadLayersModel(process.env.MODEL_PATH + '/tfjs-models/model1/model.json');
         const prediction = await model.predict(img2).array();
         var report;
-        var cancerDetect = ['Benign or Non cancerous', 'Malignant or Cancer'];
+        var cancerDetect = ['Benign or Non-cancerous', 'Malignant or Cancer'];
         if (prediction[0][0] > prediction[0][1]) {
             report = cancerDetect[0];
         } else {
@@ -267,7 +267,7 @@ const predictClickCancer = async (url) => {
         const model = await tf.loadLayersModel(process.env.MODEL_PATH + '/tfjs-models/model3/model.json');
         const prediction = await model.predict(img2).array();
         var report;
-        var cancerDetect = ['Benign or Non cancerous','Basal cell carcinoma', 'Melanocytic nevi', 'Melanoma'];
+        var cancerDetect = ['Basal cell carcinoma', 'Benign or Non-cancerous', 'Melanocytic nevi', 'Melanoma'];
         let i = prediction[0].indexOf(Math.max(...prediction[0]));
         report = cancerDetect[i];
         return report;

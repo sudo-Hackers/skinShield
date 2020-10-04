@@ -12,7 +12,7 @@ class VideoRequest extends Component{
     }
     componentDidMount() {
         const options = {
-            url: `${process.env.REACT_APP_LINK}/api/doctor/checkRequest`,
+            url: `http://localhost:3001/api/doctor/checkRequest`,
             method: 'GET',
             headers: {
               Authorization: 'Bearer ' + localStorage.getItem('token'),

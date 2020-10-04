@@ -24,7 +24,7 @@ class dashboard extends Component {
 
   componentDidMount() {
     const options = {
-      url: `${process.env.REACT_APP_LINK}/api/doctor/getProfile`,
+      url: `http://localhost:3001/api/doctor/getProfile`,
       method: 'GET',
       headers: {
         Authorization: 'Bearer ' + localStorage.getItem('token'),

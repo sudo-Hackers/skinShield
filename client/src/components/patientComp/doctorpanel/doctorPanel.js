@@ -19,7 +19,7 @@ class Main extends Component {
   componentDidMount() {
     this.setState({ loading: true });
     const options = {
-      url: `${process.env.REACT_APP_LINK}/api/patient/getDoctors`,
+      url: `http://localhost:3001/api/patient/getDoctors`,
       method: 'GET',
       headers: {
         Authorization: 'Bearer ' + localStorage.getItem('token'),

@@ -23,7 +23,7 @@ class DiscussionForums extends Component{
 
         this.setState({name : patient.name})
         const options = {
-            url: `${process.env.REACT_APP_LINK}/api/patient/getForum`,
+            url: `http://localhost:3001/api/patient/getForum`,
             method: 'GET',
             headers: {
               Authorization: 'Bearer ' + localStorage.getItem('token'),

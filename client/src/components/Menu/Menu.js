@@ -38,15 +38,13 @@ class Menu extends Component {
             <div style={{padding: '20px',transform: 'translateX(-120px) translateY(-40px)'}}>
         <Card border="primary" style={{ width: '23rem',float:'right', padding: '30px 0'}}>
     
-    <Card.Body>
-      <Card.Title>Get Started!!</Card.Title>
+    <Card.Body style={{fontSize: '23px'}}>
+      <Card.Title style={{fontSize : '25px'}}>Get Started!!</Card.Title>
       <Card.Text>
-        Some quick example text to build on the card title and make up the bulk
-        of the card's content.Some quick example text to build on the card title and make up the bulk
-        of the card's content.Some quick example text to build on the card title and make up the bulk
-        of the card's content.
+      Worried about a spot or a mole on your skin...
+Don't worry!! Get diagnosed with our trial test in one click.
       </Card.Text>
-      <Button variant="outline-info" style={{borderRadius: '20px',width: '60%'}} onClick={() => {this.setState({redirect: true})}}>Get Yout trial test!</Button>
+      <Button variant="primary" style={{borderRadius: '20px',width: '80%',fontSize : '23px'}} onClick={() => {this.setState({redirect: true})}}>Get Yout trial test!</Button>
     </Card.Body>
   </Card>
   </div>

@@ -39,7 +39,7 @@ class Trialtest extends Component {
     console.log(photoForm);
     console.log(this.state.fle);
     const options = {
-      url: `${process.env.REACT_APP_LINK}/api/patient/trialPhoto`,
+      url: 'http://localhost:3001/api/patient/trialPhoto',
       method: 'POST',
       headers: {
         'Content-Type': 'multipart/form-data'

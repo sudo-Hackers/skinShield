@@ -34,7 +34,7 @@
     font-weight: bold;
     font-family: sans-serif;
     border: none;
-    color: rgb(93, 149, 223);
+    color: rgb(91, 194, 54);
     cursor: pointer;
     padding: 30px;
     margin-bottom: 1.5px;
@@ -44,14 +44,14 @@
     color: gray;
 }
 .FormD button:hover{
-    color: blue;
+    color: rgb(91, 194, 54);
     outline: none;
     border: none;
 }
 .FormD button:focus{
     outline: none;
     border: none;
-    color: blue;
+    color: rgb(91, 194, 54);
 }
 .FormD h1{
     font-weight: bold;
@@ -67,11 +67,11 @@
     font-size: 12px;
     font-family: inherit;
     border: none;
-    color: rgb(93, 149, 223);
+    color: rgb(91, 194, 54);
     padding: 7px;
 }
 .FormD h3 button:hover{
-    color: royalblue;
+    color: rgb(91, 194, 54);
     text-decoration: underline;
 }
 
@@ -102,7 +102,7 @@
     font-weight: bold;
     font-family: sans-serif;
     border: none;
-    color: rgb(93, 149, 223);
+    color: rgb(91, 194, 54);
     cursor: pointer;
     padding: 30px;
     margin-bottom: 1.5px;
@@ -112,14 +112,14 @@
     color: gray;
 }
 .FormP button:hover{
-    color: blue;
+    color: rgb(91, 194, 54);
     outline: none;
     border: none;
 }
 .FormP button:focus{
     outline: none;
     border: none;
-    color: blue;
+    color: rgb(91, 194, 54);
 }
 .FormP h1{
     font-weight: bold;
@@ -135,11 +135,11 @@
     font-size: 12px;
     font-family: inherit;
     border: none;
-    color: rgb(93, 149, 223);
+    color: rgb(91, 194, 54);
     padding: 7px;
 }
 .FormP h3 button:hover{
-    color: royalblue;
+    color: rgb(91, 194, 54);
     text-decoration: underline;
 }
 .Google{

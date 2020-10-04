@@ -9,7 +9,7 @@ const Report = () => {
    
     useEffect(() => {
         const options = {
-            url: `${process.env.REACT_APP_LINK}/api/patient/photos`,
+            url: `http://localhost:3001/api/patient/photos`,
             method: 'GET',
             headers: {
               Authorization: 'Bearer ' + localStorage.getItem('token'),
