@@ -130,9 +130,6 @@ Skin shield is progressive web application that is installable and it gives an a
 * Ensure node-gyp is installed(npm install -g node-gyp)
 * Ensuire windows buil tool is installed(npm install -g --production windows-build-tools)
 
-**For android app** 
-* node, npm and react native cli installed 
-
 ## Installation & Setup 
 
 A step by step series of examples that tell you how to get a development env running
