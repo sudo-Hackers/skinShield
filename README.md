@@ -1,5 +1,14 @@
 # Skin_sheild
 
+> **Thanks to AGBI Hackathon and Judges for coming up with this hackathon and providing us a platform to exibit our skills**
+
+
+```
+This is under development phase
+Complete practical(Production) build is still under development
+```
+![](assets/data/Capture.PNG)
+
 ## .env file inside client
 REACT_APP_PUBLIC_VAPID_KEY= ''
 REACT_APP_LINK = 'http://localhost:3001'
