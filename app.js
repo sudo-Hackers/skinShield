@@ -18,7 +18,7 @@ const doctorRoutes = require('./routes/doctorRoutes');
 const notificationRoutes = require('./routes/notificationRoutes');
 
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json({limit: '20mb', extended: true}));
+app.use(bodyParser.json({ limit: '20mb', extended: true }));
 app.use(helmet());
 
 
@@ -52,7 +52,7 @@ const fileFilter = (req, file, cb) => {
   if (
     file.mimetype === "image/png" ||
     file.mimetype === "image/jpeg" ||
-    file.mimetype === "image/PNG"  ||
+    file.mimetype === "image/PNG" ||
     file.mimetype === "image/jpg"
   ) {
     cb(null, true);
@@ -64,7 +64,7 @@ const fileFilter = (req, file, cb) => {
 app.use(multer({ storage: storage, fileFilter: fileFilter }).single("photo"));
 
 
-app.use("/images",express.static(path.join(__dirname, "images")));
+app.use("/images", express.static(path.join(__dirname, "images")));
 
 // app.use(pino);
 app.use('/notifications', notificationRoutes);

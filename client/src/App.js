@@ -6,11 +6,6 @@ import './App.css';
 import Menu from './components/Menu/Menu';
 import Signup from './components/Signup/signup';
 import Login from './components/Login/login';
-import DocSignup from './components/signupForm/docSignup';
-import PatientSignup from './components/signupForm/patientSignup';
-import DocLogin from './components/loginForm/docLogin';
-import PatientLogin from './components/loginForm/patientLogin';
-import Admin from "./components/admin/admin";
 import MobileNavigation from './components/Navigation/MobileNavigation/MobileNavigation';
 import Backdrop from './components/Backdrop/Backdrop';
 import Alert from 'react-bootstrap/Alert';
@@ -340,10 +335,6 @@ class App extends Component {
           <Login {...props} onLoginDoctor={this.docLoginHandler} onLoginPatient={this.patientLoginHandler}/>
         )}
           />
-
-        <Route path="/admin" exact>
-            <Admin/>
-        </Route>
         <Route 
         path="/trialTest"
         exact

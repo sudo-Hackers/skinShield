@@ -187,7 +187,8 @@ class Pdashboard extends Component {
         {this.state.showReport &&
         <Card style={{marginTop: '20px' , textAlign: 'center'}}>
           <Card.Title>Your Report </Card.Title>
-          You are detected to have {this.state.report} type of cancer.
+          <Card.Text>You are detected to have {this.state.report} type of cancer.</Card.Text>
+          <Card.Text style={{fontWeight: 'bold'}}>Treatment or Prevention Steps</Card.Text>
           {
             Data[this.state.report].map((d) => {
               return(

@@ -1,0 +1,14 @@
+{
+    "Benign or Non cancerous": {
+        "prevention": ["Use a broad-spectrum Sunscreen", "Use extra caution near water, snow and sand", "Use non-sterodial anti-inflammatory drugs(NSAIDs)", "Use Polypodium leukotomos", "Watch your alcohol intake"]
+    },
+    "Melanoma": {
+        "treatment": ["Possible surgery", "Surgical removal or excision of primary melanoma", "Radiation therapy", "Lymph node dissection if the disease has spread"]
+    },
+    "Basal cell carcinoma": {
+        "treatment": ["Surgical excision", "Mohs Surgery", "Radiation Therapy", "Freezing cancer cells", "Photodynamic Therapy"]
+    },
+    "Melanocytic nevi": {
+        "treatment": ["Laser Treatment", "Tissue Expansion"]
+    }
+}
