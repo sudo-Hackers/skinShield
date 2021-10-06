@@ -102,11 +102,9 @@ Skin shield is progressive web application that is installable and it gives an a
 
 ## Challenges we ran into
 
-* Overfitting of the deep learning model because of no proper dataset
+* Dataset was imbalanced, so we had to use augmentation algorithms to address this problem.
 
 * Configuring the dependencies while integrating the deep learning model.
-
-* Obtaining a well balanced dataset for skin cancer classification.
 
 * We need to make a robust architecture of database for such a big platform and organising events for both patient and doctor via virtual prescription.
 
