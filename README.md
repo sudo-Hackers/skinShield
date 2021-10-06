@@ -1,4 +1,4 @@
-# Skin_sheild
+# SkinShield
 
 > **Thanks to AGBI Hackathon and Judges for coming up with this hackathon and providing us a platform to exibit our skills**
 
@@ -186,7 +186,7 @@ REACT_APP_LINK = 'http://localhost:3001'
 ```
 
 ## Team Members
-* Ritvik Nimagada           
+* Ritvik Nimmagadda           
 * Preethi Chandra
 * Saiprava Raut
 * Shubhadarshie Nanda
